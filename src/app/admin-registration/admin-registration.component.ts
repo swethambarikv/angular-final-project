@@ -23,21 +23,21 @@ export class AdminRegistrationComponent implements OnInit {
   }
 
 
-  OnSubmit(form: NgForm) {
+  public OnSubmit(form: NgForm) {
     console.log("submit form-Admin registration");
     this.adminService.postAdmin(form.value).subscribe((data) => {
       // this.adminService.admins=data;
-      console.log(data);
+      console.log("admin data" + data);
     })
     window.alert('Data saved successfully!');
     this.router.navigate(['/admintable'])
     this.refreshList();
 
   }
-  refreshList() {
+  public refreshList() {
     this.adminService.getAdmin().subscribe((data) => {
-      this.adminService.admins = data as User[];
-      console.log(data);
+      this.adminService.admins = data;
+      console.log("refresh" + data);
 
     })
   }

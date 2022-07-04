@@ -17,28 +17,27 @@ export class AdminRegisterService {
   readonly baseUrl = "http://localhost:8000/admin/";
   selectedAdmin!: User;
 
-  admins: User[]=[]
+  admins!: any ;
   
-  adminToEdit() {
+  public adminToEdit() {
     return this.selectedAdmin._id;
   }
 
-  getAdmin() {
-    //console.log(typeof(this.admins))
-    return this.http.get(this.baseUrl);
+  public getAdmin() {
+    return this.http.get<User>(this.baseUrl);
   }
-  getAdminById(_id: string) {
+  public getAdminById(_id: string) {
     return this.http.get<any>(this.baseUrl + `${_id}`);
   }
-  postAdmin(admin: User) {
+  public postAdmin(admin: User) {
     console.log('posted')
     return this.http.post(this.baseUrl,admin);
   }
-  putAdmin(admin: User) {
+  public putAdmin(admin: User) {
     console.log("Admin");
     return this.http.put(this.baseUrl + 'update/' + `${admin._id}`, admin, { responseType: 'text' });
   }
-  deleteAdmin(_id: string) {
+  public deleteAdmin(_id: string) {
     return this.http.delete(this.baseUrl + 'delete/' + `${_id}`, { responseType: 'text' })
   }
 

@@ -7,13 +7,12 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
-// import { AddAdminComponent } from './add-admin/add-admin.component';
-// import { AddUserComponent } from './add-user/add-user.component';
 import { AdminRegistrationComponent } from './admin-registration/admin-registration.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { AdminTableComponent } from './admin-table/admin-table.component';
 import { UserTableComponent } from './user-table/user-table.component';
-import{HttpClientModule} from '@angular/common/http'
+import{HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 @NgModule({
@@ -23,8 +22,6 @@ import{HttpClientModule} from '@angular/common/http'
     LoginComponent,
     AdminComponent,
     UserComponent,
-    // AddAdminComponent,
-    // AddUserComponent,
     AdminRegistrationComponent,
     UserRegistrationComponent,
     AdminTableComponent,
@@ -37,6 +34,7 @@ import{HttpClientModule} from '@angular/common/http'
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

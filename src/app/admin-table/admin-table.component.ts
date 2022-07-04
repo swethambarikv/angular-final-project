@@ -8,30 +8,34 @@ import { User } from '../service/user1';
   selector: 'app-admin-table',
   templateUrl: './admin-table.component.html',
   styleUrls: ['./admin-table.component.scss'],
-  providers:[AdminRegisterService]
+  providers: [AdminRegisterService]
 })
 export class AdminTableComponent implements OnInit {
-  //admins:User[]=[];
-  visible!:boolean;
-  constructor(protected adminService:AdminRegisterService) { }
+  admins: any = [];
+
+  visible!: boolean;
+  constructor(protected adminService: AdminRegisterService) { }
   ngOnInit(): void {
-    console.log(this.adminService.admins);
+
     this.adminList();
+
 
   }
 
-  adminList(){
-    this.adminService.getAdmin().subscribe((data)=>{
-      console.log(data)
-      this.adminService.admins=data as User[];
-      console.log(this.adminService.admins);
-      
-      if(data!=0){
-        this.visible=false;
+  public adminList() {
+    this.adminService.getAdmin().subscribe((data) => {
+      console.log("Data" + data)
+      JSON.stringify(data)
+
+      this.admins = data;
+
+      if (data !== null) {
+        this.visible = false;
       }
-      else{
-        this.visible=true;
+      else {
+        this.visible = true;
       }
+
     })
   }
 }
