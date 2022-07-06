@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminRegisterService } from '../service/admin-register.service';
-import { User } from '../service/user1';
-
+import { User1 } from '../service/user1';
 
 @Component({
   selector: 'app-admin-registration',
@@ -14,20 +13,21 @@ export class AdminRegistrationComponent implements OnInit {
 
   public topics = ['Angular', 'React', 'php', 'Python', 'Pearl', '.Net', 'EBA', 'Oracle', 'BFS'];
 
-  adminList: User[] = [];
-  // userModel:User[]=[];
+  adminList: User1[] = [];
+  userModel!:User1[];
   constructor(private router: Router, protected adminService: AdminRegisterService) { }
 
   ngOnInit(): void {
-    console.log(this.adminService.topic)
+    console.log(this.adminService.topic);
+    
   }
 
 
-  public OnSubmit(form: NgForm) {
+  OnSubmit(form: NgForm) {
     console.log("submit form-Admin registration");
     this.adminService.postAdmin(form.value).subscribe((data) => {
       // this.adminService.admins=data;
-      console.log("admin data" + data);
+      console.log("admin data"+data);
     })
     window.alert('Data saved successfully!');
     this.router.navigate(['/admintable'])
@@ -37,9 +37,13 @@ export class AdminRegistrationComponent implements OnInit {
   public refreshList() {
     this.adminService.getAdmin().subscribe((data) => {
       this.adminService.admins = data;
-      console.log("refresh" + data);
+      console.log("refresh"+data);
 
     })
   }
-
+  public userdata(userForm:NgForm) {
+  
+    this.adminService.postAdmin(userForm.value);
+    this.router.navigate(['/admintable']);
+  }
 }

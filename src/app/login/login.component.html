@@ -1,30 +1,46 @@
+<div class="container">
 
-<div class="card">
-    <h4 class="card-header">Login</h4>
-    <div class="card-body">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                    <div *ngIf="f.username.errors.required">Username is required</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                    <div *ngIf="f.password.errors.required">Password is required</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Login
-                </button>
-                <a routerLink="../register" class="btn btn-link">Register</a>
-            </div>
-        </form>
-    </div>
-</div>
+    <form class="border bg-secondary text-white  w-50 p-5" #userForm="ngForm" novalidate>
+        <h1 class="h4 mb-4">Login</h1>
+
+        <div class="form-login">
+            <h3><label>UserName</label></h3>
+            <input type="text" #username="ngModel" class="form-control"
+                [class.is-invalid]="username.invalid && username.touched" name="username"
+                placeholder="Enter the Username" [(ngModel)]="user.username" required>
+            <small class="text-danger" [class.d-none]="username.valid || username.untouched">Name is required</small>
+        </div>
+
+        <div class="form-login">
+            <h3><label>Password</label></h3>
+            <input type="password" #password="ngModel" class="form-control"
+                [class.is-invalid]="password.invalid && password.touched" name="password"
+                placeholder="Enter the Password" [(ngModel)]="user.password" required>
+            <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is
+                required</small><br>
+        </div><br>
+        <div class="form-login">
+            <label class="form-control-label px-3">Role<span class="text-danger"> *</span></label>
+            <select class="form-select" id="role" name="role" placeholder="Select the Role"
+                aria-label="Default select example" [(ngModel)]="roleservice.roleValue" value="role1" required>
+                <h3><label>Role</label></h3>
+                <option selected disabled>Open this select Role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+            {{roleservice.roleValue}}
+        </div>
+        <!-- 
+        <button [disabled]="userForm.form.invalid" color="info" type="submit" class="btn btn-primary"
+            (click)="btnClick()">Login</button><br><br> -->
+        <div class="form-login">
+            <button *ngIf="roleservice.roleValue === 'admin'" class="btn btn-primary me-3" value="Login"
+                (click)="displayAdmin()">Admin Login</button>
+            <button *ngIf="roleservice.roleValue === 'user'" class="btn btn-primary me-3" value="Login"
+                (click)="displayUser()">User Login</button>
+
+        </div>
+        <!-- <button class="btn btn-primary" (click)="display()">LOGIN</button> -->
+
+    </form>
 </div>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AdminRegisterService } from '../service/admin-register.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserRegistrationComponent implements OnInit {
 
-  constructor() { }
+  public topics = ['Angular', 'React', 'php', 'Python', 'Pearl', '.Net', 'EBA', 'Oracle', 'BFS'];
+
+  constructor(public userService:UserService,private router:Router) { }
 
   ngOnInit(): void {
+  }
+  public userdata(userForm:NgForm){
+    this.userService.postUser(userForm.value);
+    this.router.navigate(['/usertable']);
   }
 
 }

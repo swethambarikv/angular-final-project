@@ -11,8 +11,10 @@ import { AdminRegistrationComponent } from './admin-registration/admin-registrat
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { AdminTableComponent } from './admin-table/admin-table.component';
 import { UserTableComponent } from './user-table/user-table.component';
-import{HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { UserService } from './service/user.service';
+import { AdminRegisterService } from './service/admin-register.service';
 
 
 @NgModule({
@@ -36,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     FormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [UserService, AdminRegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,15 +27,15 @@
                     <td>{{u.topic}}</td>
 
                     <td><a class="nav-link active" aria-current="page" routerLinkActive="active"
-                            [routerLink]="['/dispaly',item._id]">
-                            <mat-icon (click)="changeIcon('star')">visibility</mat-icon>
+                            [routerLink]="['/dispaly',u._id]">
+                            <!-- <mat-icon (click)="changeIcon('star')">visibility</mat-icon> -->
                         </a></td>
                     <td>
                         <tr *ngIf = "this.roleService.roleValue === 'admin'">
 
-                        <button type="submit" (click)="remove(item.name)" class="btn btn-danger">Remove</button>&nbsp;
-                        <button type="submit" [routerLink]="['/update-add',item._id]" class="btn btn-info">Edit</button>
-                        <button type="submit" (click)="onEdit(item)" class="btn btn-info">Edit</button>
+                        <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp;
+                        <!-- <button type="submit" [routerLink]="['/update-add',u._id]" class="btn btn-info">Edit</button> -->
+                        <button type="submit" (click)="onEdit(u._id)" class="btn btn-info">Edit</button>
 
                         </tr>
                     </td>
