@@ -19,12 +19,12 @@
 }
 
 .admin-reg-form .form-holder {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
 }
 
 .admin-reg-form .form-holder .form-content {
@@ -78,11 +78,16 @@
 }
 
 
-.admin-reg-form .form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
+.admin-reg-form .form-content label,
+.was-validated .form-check-input:invalid~.form-check-label,
+.was-validated .form-check-input:valid~.form-check-label {
     color: #fff;
 }
 
-.admin-reg-form .form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
+.admin-reg-form .form-content input[type=text],
+.form-content input[type=password],
+.form-content input[type=email],
+.form-content select {
     width: 100%;
     padding: 9px 20px;
     text-align: left;
@@ -99,18 +104,20 @@
 }
 
 
-.btn-primary{
+.btn-primary {
     background-color: #6C757D;
     outline: none;
     border: 0px;
-     box-shadow: none;
+    box-shadow: none;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
     background-color: #495056;
     outline: none !important;
     border: none !important;
-     box-shadow: none;
+    box-shadow: none;
 }
 
 .form-content textarea {
@@ -132,21 +139,22 @@
     margin-bottom: 14px;
 }
 
-.form-content textarea:hover, .form-content textarea:focus {
+.form-content textarea:hover,
+.form-content textarea:focus {
     border: 0;
     background-color: #ebeff8;
     color: #8D8D8D;
 }
 
-.mv-up{
+.mv-up {
     margin-top: -9px !important;
     margin-bottom: 8px !important;
 }
 
-.invalid-feedback{
+.invalid-feedback {
     color: #ff606e;
 }
 
-.valid-feedback{
-   color: #2acc80;
+.valid-feedback {
+    color: #2acc80;
 }
