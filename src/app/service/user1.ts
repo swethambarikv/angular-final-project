@@ -4,6 +4,6 @@ export class User1 {
    public name: string = '';
    public email: string = '';
    public gender: string = '';
-   public mobile: string  = '';
+   public phone: string  = '';
    public topic:string = '';
 }

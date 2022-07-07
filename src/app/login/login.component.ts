@@ -6,6 +6,8 @@ import { User } from '../service/user';
 import { User1 } from '../service/user1';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../service/login.service';
+import { AuthService } from '../service/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -16,26 +18,50 @@ export class LoginComponent implements OnInit {
 
   role: String = '';
 
-  constructor(private router: Router, public user: AdminRegisterService, public roleservice: RoleServiceService, private http: HttpClient) { }
+  constructor(private router: Router,
+    public user: AdminRegisterService,
+    public roleservice: RoleServiceService,
+    private http: HttpClient,
+    public authService: AuthService) { }
 
   ngOnInit(): void {
 
   }
-  readonly baseURL = "http://localhost:8000/login/"
-  public displayAdmin() {
+  // readonly baseURL = "http://localhost:8000/login/"
+
+
+
+  public displayAdmin(loginForm: NgForm) {
+    console.log(loginForm.value)
+    this.authService.loginUser(loginForm.value).subscribe(
+      res => {
+        localStorage.setItem('token', res.token)
+
+        console.log(res)
+      },
+      error => {
+        console.log(error)
+      }
+
+    )
     this.router.navigate(['/adminrole']);
   }
-  public displayUser() {
+  public displayUser(loginForm: NgForm) {
+    console.log(loginForm.value)
     this.router.navigate(['/userrole']);
   }
-  public login(data: User) {
-    return this.http.post(this.baseURL + 'login', data);
-  }
 
-  public loggedIn(): boolean {
-    return !!localStorage.getItem('token');
-  }
 
+
+
+
+
+
+  // public login(data: User) {
+  //   return this.http.post(this.baseURL + 'login', data);
+  // }
+
+  
   public getToken() {
     return localStorage.getItem('token')
   }

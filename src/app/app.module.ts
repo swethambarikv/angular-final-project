@@ -11,11 +11,13 @@ import { AdminRegistrationComponent } from './admin-registration/admin-registrat
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { AdminTableComponent } from './admin-table/admin-table.component';
 import { UserTableComponent } from './user-table/user-table.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { UserService } from './service/user.service';
 import { AdminRegisterService } from './service/admin-register.service';
-
+import { RegisterComponent } from './register/register.component';
+import { AuthService } from './service/auth.service';
+import { TokeninterceptorService } from './tokeninterceptor.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { AdminRegisterService } from './service/admin-register.service';
     AdminRegistrationComponent,
     UserRegistrationComponent,
     AdminTableComponent,
-    UserTableComponent
+    UserTableComponent,
+    RegisterComponent
 
   ],
   imports: [
@@ -38,7 +41,9 @@ import { AdminRegisterService } from './service/admin-register.service';
     FormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [UserService, AdminRegisterService],
+  providers: [UserService, AdminRegisterService,AuthService,{
+    provide:HTTP_INTERCEPTORS,useClass:TokeninterceptorService,multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

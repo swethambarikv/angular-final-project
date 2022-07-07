@@ -10,10 +10,11 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
-                    <th>Mobile</th>
+                    <th>Phone no</th>
                     <th>Topic</th>
-                    <th>View</th>
+                    <th>Action</th>
                     <th *ngIf="this.roleService.roleValue === 'admin'">Action</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +24,7 @@
                     <td>{{u.name}}</td>
                     <td>{{u.email}}</td>
                     <td>{{u.gender}}</td>
-                    <td>{{u.mobile}}</td>
+                    <td>{{u.phone}}</td>
                     <td>{{u.topic}}</td>
 
                     <td><a class="nav-link active" aria-current="page" routerLinkActive="active"
@@ -35,17 +36,18 @@
 
                         <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp;
                         <!-- <button type="submit" [routerLink]="['/update-add',u._id]" class="btn btn-info">Edit</button> -->
-                        <button type="submit" (click)="onEdit(u._id)" class="btn btn-info">Edit</button>
+                        <button type="submit" [routerLink]="['/update',u._id]" class="btn btn-info">Edit</button>
 
                         </tr>
                     </td>
                 </tr>
             </tbody>
         </table>
+    
         <div class="text-center">
             <a *ngIf = "this.roleService.roleValue=== 'admin'" [routerLink]="['/user']" class="btn btn-primary me-3">Add New</a>
             <button class="btn btn-secondary me-5" [routerLink]="['../admin']">Add Admin</button>
-            <button type="submit" [routerLink]="['/role']" class="btn btn-primary me-3">Back</button>&nbsp;
+            <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary me-3">Back</button>&nbsp;
 
             <button type="submit" [routerLink]="['/']" class="btn btn-danger">Logout</button>
         </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRegisterService } from '../service/admin-register.service';
 import { User1 } from '../service/user1';
 
@@ -15,35 +15,55 @@ export class AdminRegistrationComponent implements OnInit {
 
   adminList: User1[] = [];
   userModel!:User1[];
-  constructor(private router: Router, protected adminService: AdminRegisterService) { }
+  constructor(private router:Router,private route: ActivatedRoute, protected adminService: AdminRegisterService) { }
+
+  _id: string = '';
 
   ngOnInit(): void {
     console.log(this.adminService.topic);
+    this.route.params.subscribe(params => {
+      this._id=params['_id']
+      
+      console.log("route _id : "+this._id);        
+    });
     
   }
 
 
-  OnSubmit(form: NgForm) {
+  userData(form: NgForm) {
     console.log("submit form-Admin registration");
+    console.log(form.value);
+    if (!this._id) {
+
     this.adminService.postAdmin(form.value).subscribe((data) => {
       // this.adminService.admins=data;
       console.log("admin data"+data);
     })
     window.alert('Data saved successfully!');
     this.router.navigate(['/admintable'])
-    this.refreshList();
-
+    // this.refreshList();
   }
-  public refreshList() {
-    this.adminService.getAdmin().subscribe((data) => {
-      this.adminService.admins = data;
-      console.log("refresh"+data);
-
-    })
+  else{
+         //Update User info
+         this.adminService.updateAdmin(form.value,this._id).subscribe((res)=>{
+          console.log("update event info");
+        })
+        alert("Details are Updated Successfully")
   }
+  }
+  // public refreshList() {
+  //   this.adminService.getAdmin().subscribe((data) => {
+  //     this.adminService.admins = data;
+  //     console.log("refresh"+data);
+
+  //   })
+  // }
   public userdata(userForm:NgForm) {
+  console.log(userForm.value);
   
-    this.adminService.postAdmin(userForm.value);
+    this.adminService.postAdmin(userForm.value).subscribe((res)=>{
+console.log(res);
+    })
     this.router.navigate(['/admintable']);
   }
 }

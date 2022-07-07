@@ -18,7 +18,12 @@ export class UserRegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
   public userdata(userForm:NgForm){
-    this.userService.postUser(userForm.value);
+    console.log(userForm.value.name);
+    
+    this.userService.postUser(userForm.value).subscribe((res)=>{
+      console.log(JSON.stringify(res));
+      
+    });
     this.router.navigate(['/usertable']);
   }
 

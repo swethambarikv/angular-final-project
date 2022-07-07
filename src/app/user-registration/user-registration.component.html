@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="border border-dark bg-secondary text-white w-50 p-5" #userForm="ngForm" novalidate>
+  <form class="border border-dark bg-secondary text-white w-50 p-5" #userForm="ngForm" (ngSubmit)="userdata(userForm)" novalidate>
     <h1>Add User</h1>
 
     <div class="form-group">
@@ -28,7 +28,7 @@
     <div class="form-group">
       <h3><label>Phone</label></h3>
       <input type="tel" #phone="ngModel" pattern="^\d{10}$" class="form-control" required
-        [class.is-invalid]="phone.invalid && phone.touched" name="phone" [(ngModel)]="userService.mobile">
+        [class.is-invalid]="phone.invalid && phone.touched" name="phone" [(ngModel)]="userService.phone">
       <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">PhoneNumber is required</small>
     </div><br>
 
@@ -41,7 +41,6 @@
       </select>
       <small class="text-danger" [class.d-none]="topic.valid || topic.untouched">Please choose a topic</small>
     </div><br>
-    <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary"
-      (click)="userdata(userForm)">submit</button><br><br>
+    <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary">submit</button><br><br>
   </form>
 </div>

@@ -8,15 +8,21 @@ import { LoginComponent } from './login/login.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserComponent } from './user/user.component';
 import { AuthGuard } from './service/auth.guard';
+import { UserTableComponent } from './user-table/user-table.component';
+import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   {path:'',component: HomeComponent},
   {path:'admin',component:AdminRegistrationComponent},
+  {path:'update/:_id',component:AdminRegistrationComponent},
   {path:'admintable',component:AdminTableComponent},
   {path:'user',component:UserComponent},
-  {path:'usertable',component:UserRegistrationComponent},
+  {path:'add-user',component:UserRegistrationComponent},
+  {path:'usertable',component:UserTableComponent},
   {path:'adminrole',component:AdminComponent,},
   {path:'userrole',component:UserComponent},
   {path:'login',component:LoginComponent },
+  {path:'register',component:RegisterComponent}
+  // {path:''}
 ];
 
 @NgModule({
