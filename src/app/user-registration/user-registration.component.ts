@@ -13,16 +13,16 @@ export class UserRegistrationComponent implements OnInit {
 
   public topics = ['Angular', 'React', 'php', 'Python', 'Pearl', '.Net', 'EBA', 'Oracle', 'BFS'];
 
-  constructor(public userService:UserService,private router:Router) { }
+  constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
-  public userdata(userForm:NgForm){
+  public userdata(userForm: NgForm) {
     console.log(userForm.value.name);
-    
-    this.userService.postUser(userForm.value).subscribe((res)=>{
+
+    this.userService.postUser(userForm.value).subscribe((res) => {
       console.log(JSON.stringify(res));
-      
+
     });
     this.router.navigate(['/usertable']);
   }

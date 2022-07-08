@@ -7,8 +7,6 @@
             <div class="form-items">
               <h3>Add Admin</h3>
               <p>Fill in the data below.</p>
-              <!-- <form class="requires-validation" novalidate> -->
-
                 <div class="col-md-12">
                   <input class="form-control" type="text" name="name" name="name" placeholder="Full Name" required [(ngModel)]="adminService.name" required >
                   <div class="valid-feedback">Name field is valid!</div>
@@ -79,7 +77,6 @@
                 <div class="form-button mt-3">
                   <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary" (click)="userdata(userForm)">submit</button>
                 </div>
-              <!-- </form> -->
             </div>
           </div>
         </div>

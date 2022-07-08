@@ -21,12 +21,12 @@
                                 <div class="invalid-feedback">Password field cannot be blank!</div>
                             </div>
                             <div class="col-md-12">
-                                <label class="form-control-label px-3">Role<span class="text-danger"> *</span></label>
-                                <select class="form-select mt-3" id="role" name="role" placeholder="Select the Role"
+                                <!-- <label class="form-control-label px-3">Role<span class="text-danger"> *</span></label> -->
+                                <select class="form-select" id="role" name="role" placeholder="Select the Role"
                                     aria-label="Default select example" [(ngModel)]="roleservice.roleValue"
                                     value="role1" required> 
-                                    <h3><label>Role</label></h3>
-                                    <option selected disabled>Open this select Role</option>
+                                    <!-- <h3><label>Role</label></h3> -->
+                                    <option selected value="">Open this select Role</option>
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
                                 </select>
@@ -41,9 +41,6 @@
                                 
 
                             </div>
-                            <!-- <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-primary">Register</button>
-                            </div> -->
                         </form>
                     </div>
                 </div>

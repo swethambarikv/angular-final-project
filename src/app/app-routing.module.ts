@@ -22,7 +22,6 @@ const routes: Routes = [
   {path:'userrole',component:UserComponent},
   {path:'login',component:LoginComponent },
   {path:'register',component:RegisterComponent}
-  // {path:''}
 ];
 
 @NgModule({

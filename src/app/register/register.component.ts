@@ -11,18 +11,18 @@ import { UserService } from '../service/user.service';
 export class RegisterComponent implements OnInit {
 
 
-  constructor(public userService:UserService,private authService:AuthService) { }
+  constructor(public userService: UserService, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
-  registerUser(registerForm: NgForm) {
+  public registerUser(registerForm: NgForm) {
     console.log(registerForm.value);
     this.authService.registerUser(registerForm.value).subscribe(
-      res=>{
-        localStorage.setItem('token',res.token)
+      res => {
+        localStorage.setItem('token', res.token)
         console.log(res)
       },
-      err=>{
+      err => {
         console.log(err)
       }
 

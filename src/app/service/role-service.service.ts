@@ -14,5 +14,5 @@ export class RoleServiceService {
     return this.roleValue;
   }
 
-  
+
 }

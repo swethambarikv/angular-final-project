@@ -10,7 +10,7 @@ import { AuthService } from '../service/auth.service';
 export class HomeComponent implements OnInit {
   display: any;
 
-  constructor(private router:Router,public authService:AuthService) { }
+  constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit(): void {
   }

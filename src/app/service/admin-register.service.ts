@@ -25,38 +25,6 @@ export class AdminRegisterService {
   public admins!: any;
 
   adminValue: any;
-
-  // set setId(val: any) {
-  //   this.adminValue = val;
-  // }
-  // get getId() {
-  //   return this.adminValue;
-  // }
-  // set setAd(val: any) {
-  //   this.adminValue = val.value;
-  // }
-  // get getAd() {
-  //   return this.adminValue
-  // }
-  // postAdmin(admin: User1) {
-  //   return this.http.post(this.baseUrl, admin)
-  // }
-  // editAdmin(admin: User1) {
-  //   return this.http.put(this.baseUrl + `/${this.getId}`, admin)
-  // }
-  // getAdminList(){
-  //   return this.http.get(this.baseUrl)
-  // }
-  // getAdmin(_id:string){
-  //   return this.http.get(this.baseUrl+`/${this._id}`)
-  // }
-  // putAdmin(admin:User1){
-  //   return this.http.put(this.baseUrl+`/${this.getId}`,admin);
-  // }
-  // deleteAdmin(_id:string){
-  //   return this.http.delete(this.baseUrl+`/${_id}`);
-  // }
-
   public postAdmin(admin: User1) {
     console.log('posted')
     console.log(admin);
@@ -80,7 +48,7 @@ export class AdminRegisterService {
 
   public putAdmin(admin: User1) {
     console.log("Put request-Admin");
-    return this.http.put(this.baseUrl +  `/${this.getThatId}`, admin, { responseType: 'text' });
+    return this.http.put(this.baseUrl + `/${this.getThatId}`, admin, { responseType: 'text' });
   }
   public deleteAdmin(_id: string) {
     return this.http.delete(this.baseUrl + `/${_id}`, { responseType: 'text' })
@@ -91,7 +59,6 @@ export class AdminRegisterService {
 
   public deleteUserId(_id: string) {
     console.log("delete: " + _id);
-    // this.refreshEmployeeList();
     return this.http.delete(this.baseUrl + `/${_id}`);
   }
 

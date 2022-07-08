@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
-import { User2} from './user2'
+import { User1} from './user1'
 @Injectable({
   providedIn: 'root'
 })
 export class UserRegistrationService {
 
   constructor(private http: HttpClient) { }
-  public _id!: User2;
-  public name!: User2;
-  public email!: User2;
-  public mobile!: User2;
-  public topic!: User2;
-  public gender!: User2;
-  public role!: User2;
+  public _id!: User1;
+  public name!: User1;
+  public email!: User1;
+  public mobile!: User1;
+  public topic!: User1;
+  public gender!: User1;
+  public role!: User1;
   public username!: User;
   public password!: User;
   public user!: any;
 
   public userId: any;
   readonly baseUrl = "http://localhost:8000/users/";
-  public selectedUser!: User2;
+  public selectedUser!: User1;
 
   public users!: any;
   public userToEdit() {
@@ -29,18 +29,18 @@ export class UserRegistrationService {
   }
 
   public getUserList() {
-    return this.http.get<User2>(this.baseUrl);
+    return this.http.get<User1>(this.baseUrl);
   }
   public getUserById(_id: string) {
     return this.http.get<any>(this.baseUrl + `${_id}`);
   }
-  public postUser(user: User2) {
+  public postUser(user: User1) {
     console.log('posted')
     console.log(user);
 
     return this.http.post(this.baseUrl, user);
   }
-  public putUser(user: User2) {
+  public putUser(user: User1) {
     console.log("User");
     return this.http.put(this.baseUrl + 'update/' + `${user._id}`, user, { responseType: 'text' });
   }
@@ -57,7 +57,7 @@ export class UserRegistrationService {
     return this.http.delete(this.baseUrl + `/${_id}`);
   }
 
-  public updateUser(form: User2, _id: string) {
+  public updateUser(form: User1, _id: string) {
     return this.http.put(this.baseUrl + `/${_id}`, form)
   }
 

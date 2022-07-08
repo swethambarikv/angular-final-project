@@ -50,18 +50,6 @@ export class LoginComponent implements OnInit {
     console.log(loginForm.value)
     this.router.navigate(['/userrole']);
   }
-
-
-
-
-
-
-
-  // public login(data: User) {
-  //   return this.http.post(this.baseURL + 'login', data);
-  // }
-
-  
   public getToken() {
     return localStorage.getItem('token')
   }

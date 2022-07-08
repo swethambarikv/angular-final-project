@@ -27,14 +27,12 @@ export class AdminTableComponent implements OnInit {
   visible!: boolean;
   constructor(protected adminService: AdminRegisterService, public roleService: RoleServiceService) { }
   ngOnInit(): void {
-    // this.onEdit(this._id);
     console.log("roleValue: "+this.roleService.roleValue);
     
     this.adminList();
   }
   public adminList() {
     this.adminService.getAdminList().subscribe((data) => {
-      // console.log("Data" + data)
       JSON.stringify(data)
       this.admins = data;
       if (data !== null) {
@@ -46,14 +44,6 @@ export class AdminTableComponent implements OnInit {
 
     })
   }
-  // public onEdit(id: any) {
-  //   this.adminService.getAdminList();
-  //   console.log(this.adminService.getAdminId);
-  //   this.adminService.getThatId(id).subscribe(
-  //     (res: any) => this.editAdmin(res),
-  //     (err: any) => console.log(err)
-  //   )
-  // }
   public remove(_id: any) {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.adminService.deleteUserId(_id).subscribe((res) => {
@@ -69,7 +59,7 @@ export class AdminTableComponent implements OnInit {
       this.adminService.admins=res as User1;
     })  
   }
-  onEdit(id:any){
+  public onEdit(id:any){
     this.adminService.getAdminList();
     console.log(this.adminService.getThatId);
     this.adminService.getThatId(id).subscribe(
@@ -77,7 +67,7 @@ export class AdminTableComponent implements OnInit {
       (err:any)=>console.log(err)
     )
   }
-  editAdmin(admin: User1) {
+  public editAdmin(admin: User1) {
     this.adminForm.patchValue({
        _id: admin._id,
        name:admin.name,
@@ -88,7 +78,7 @@ export class AdminTableComponent implements OnInit {
     
     })
   }
-  resetForm(form?:NgForm){
+  public resetForm(form?:NgForm){
     if(form)
     form.reset();
     this.adminService.selectedAdmin={

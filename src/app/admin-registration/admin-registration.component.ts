@@ -29,34 +29,25 @@ export class AdminRegistrationComponent implements OnInit {
   }
 
 
-  userData(form: NgForm) {
+  public userData(form: NgForm) {
     console.log("submit form-Admin registration");
     console.log(form.value);
     if (!this._id) {
 
       this.adminService.postAdmin(form.value).subscribe((data) => {
-        // this.adminService.admins=data;
         console.log("admin data" + data);
       })
       window.alert('Data saved successfully!');
       this.router.navigate(['/admintable'])
-      // this.refreshList();
     }
     else {
-      //Update User info
       this.adminService.putAdmin(form.value).subscribe((res) => {
         console.log("update event info");
       })
       alert("Details are Updated Successfully")
     }
   }
-  // public refreshList() {
-  //   this.adminService.getAdmin().subscribe((data) => {
-  //     this.adminService.admins = data;
-  //     console.log("refresh"+data);
 
-  //   })
-  // }
   public userdata(userForm: NgForm) {
     console.log(userForm.value);
 
