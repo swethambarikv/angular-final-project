@@ -20,43 +20,78 @@ export class AdminRegisterService {
   public user!: any;
 
   public adminId: any;
-  readonly baseUrl = "http://localhost:8000/admin/";
+  readonly baseUrl = "http://localhost:8000/admin";
   public selectedAdmin!: User1;
-
   public admins!: any;
 
-  public adminToEdit() {
-    return this.selectedAdmin._id;
+  adminValue: any;
+
+  // set setId(val: any) {
+  //   this.adminValue = val;
+  // }
+  // get getId() {
+  //   return this.adminValue;
+  // }
+  // set setAd(val: any) {
+  //   this.adminValue = val.value;
+  // }
+  // get getAd() {
+  //   return this.adminValue
+  // }
+  // postAdmin(admin: User1) {
+  //   return this.http.post(this.baseUrl, admin)
+  // }
+  // editAdmin(admin: User1) {
+  //   return this.http.put(this.baseUrl + `/${this.getId}`, admin)
+  // }
+  // getAdminList(){
+  //   return this.http.get(this.baseUrl)
+  // }
+  // getAdmin(_id:string){
+  //   return this.http.get(this.baseUrl+`/${this._id}`)
+  // }
+  // putAdmin(admin:User1){
+  //   return this.http.put(this.baseUrl+`/${this.getId}`,admin);
+  // }
+  // deleteAdmin(_id:string){
+  //   return this.http.delete(this.baseUrl+`/${_id}`);
+  // }
+
+  public postAdmin(admin: User1) {
+    console.log('posted')
+    console.log(admin);
+    return this.http.post(this.baseUrl, admin);
+  }
+  public getThatId(id: any) {
+    return this.http.get(this.baseUrl + `/${id}`)
   }
 
   public getAdminList() {
     return this.http.get<User1>(this.baseUrl);
   }
-  public getAdminById(_id: string) {
-    return this.http.get<any>(this.baseUrl + `${_id}`);
+  public adminToEdit() {
+    return this.selectedAdmin._id;
   }
-  public postAdmin(admin: User1) {
-    console.log('posted')
-    console.log(admin);
 
-    return this.http.post(this.baseUrl, admin);
+
+  public getAdminById(_id: string) {
+    return this.http.get<any>(this.baseUrl + `/${_id}`);
   }
+
   public putAdmin(admin: User1) {
-    console.log("Admin");
-    return this.http.put(this.baseUrl + 'update/' + `${admin._id}`, admin, { responseType: 'text' });
+    console.log("Put request-Admin");
+    return this.http.put(this.baseUrl +  `/${this.getThatId}`, admin, { responseType: 'text' });
   }
   public deleteAdmin(_id: string) {
-    return this.http.delete(this.baseUrl + 'delete/' + `${_id}`, { responseType: 'text' })
+    return this.http.delete(this.baseUrl + `/${_id}`, { responseType: 'text' })
   }
-  // get getAdminId() {
-  //   return this.adminId;
-  // }
-  public getThatId(id: any) {
-    return this.http.get(this.baseUrl + `/${id}`)
+  get getAdminId() {
+    return this.adminId;
   }
-  public deleteUserId(_id: string) {
-    console.log("delete" + _id);
 
+  public deleteUserId(_id: string) {
+    console.log("delete: " + _id);
+    // this.refreshEmployeeList();
     return this.http.delete(this.baseUrl + `/${_id}`);
   }
 

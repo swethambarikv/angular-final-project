@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { AdminRegisterService } from '../service/admin-register.service';
 import { RoleServiceService } from '../service/role-service.service';
 import { User } from '../service/user';
@@ -57,14 +57,25 @@ export class AdminTableComponent implements OnInit {
   public remove(_id: any) {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.adminService.deleteUserId(_id).subscribe((res) => {
-        console.log(res);  
+        console.log(res);
+        this.refreshList();  
       });
-      // this.featureService.getList().subscribe((res)=>{
-      //   this.featuresList=res as Features[]
-      //   console.log(JSON.stringify(res));
-      // });
-    }
+          }
 
+    
+  }
+  public refreshList(){
+    this.adminService.getAdminList().subscribe((res)=>{
+      this.adminService.admins=res as User1;
+    })  
+  }
+  onEdit(id:any){
+    this.adminService.getAdminList();
+    console.log(this.adminService.getThatId);
+    this.adminService.getThatId(id).subscribe(
+      (res:any)=>this.editAdmin(res),
+      (err:any)=>console.log(err)
+    )
   }
   editAdmin(admin: User1) {
     this.adminForm.patchValue({
@@ -76,6 +87,19 @@ export class AdminTableComponent implements OnInit {
        topic:admin.topic
     
     })
+  }
+  resetForm(form?:NgForm){
+    if(form)
+    form.reset();
+    this.adminService.selectedAdmin={
+      _id:"",
+      name:"",
+      email:"",
+      gender:"",
+      phone:"",
+      topic:"",
+
+    }
   }
 }
 

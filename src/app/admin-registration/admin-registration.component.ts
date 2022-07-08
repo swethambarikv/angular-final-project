@@ -14,19 +14,18 @@ export class AdminRegistrationComponent implements OnInit {
   public topics = ['Angular', 'React', 'php', 'Python', 'Pearl', '.Net', 'EBA', 'Oracle', 'BFS'];
 
   adminList: User1[] = [];
-  userModel!:User1[];
-  constructor(private router:Router,private route: ActivatedRoute, protected adminService: AdminRegisterService) { }
+  userModel!: User1[];
+  constructor(private router: Router, private route: ActivatedRoute, protected adminService: AdminRegisterService) { }
 
   _id: string = '';
 
   ngOnInit(): void {
     console.log(this.adminService.topic);
     this.route.params.subscribe(params => {
-      this._id=params['_id']
-      
-      console.log("route _id : "+this._id);        
+      this._id = params['_id']
+      console.log("route _id : " + this._id);
     });
-    
+
   }
 
 
@@ -35,21 +34,21 @@ export class AdminRegistrationComponent implements OnInit {
     console.log(form.value);
     if (!this._id) {
 
-    this.adminService.postAdmin(form.value).subscribe((data) => {
-      // this.adminService.admins=data;
-      console.log("admin data"+data);
-    })
-    window.alert('Data saved successfully!');
-    this.router.navigate(['/admintable'])
-    // this.refreshList();
-  }
-  else{
-         //Update User info
-         this.adminService.updateAdmin(form.value,this._id).subscribe((res)=>{
-          console.log("update event info");
-        })
-        alert("Details are Updated Successfully")
-  }
+      this.adminService.postAdmin(form.value).subscribe((data) => {
+        // this.adminService.admins=data;
+        console.log("admin data" + data);
+      })
+      window.alert('Data saved successfully!');
+      this.router.navigate(['/admintable'])
+      // this.refreshList();
+    }
+    else {
+      //Update User info
+      this.adminService.putAdmin(form.value).subscribe((res) => {
+        console.log("update event info");
+      })
+      alert("Details are Updated Successfully")
+    }
   }
   // public refreshList() {
   //   this.adminService.getAdmin().subscribe((data) => {
@@ -58,11 +57,11 @@ export class AdminRegistrationComponent implements OnInit {
 
   //   })
   // }
-  public userdata(userForm:NgForm) {
-  console.log(userForm.value);
-  
-    this.adminService.postAdmin(userForm.value).subscribe((res)=>{
-console.log(res);
+  public userdata(userForm: NgForm) {
+    console.log(userForm.value);
+
+    this.adminService.postAdmin(userForm.value).subscribe((res) => {
+      console.log(res);
     })
     this.router.navigate(['/admintable']);
   }

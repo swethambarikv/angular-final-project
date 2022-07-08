@@ -14,6 +14,7 @@
                     <th>Topic</th>
                     <th>Action</th>
                     <th *ngIf="this.roleService.roleValue === 'admin'">Action</th>
+                    <th><i class="bi bi-pen"></i></th>
                     
                 </tr>
             </thead>
@@ -45,8 +46,10 @@
         </table>
     
         <div class="text-center">
-            <a *ngIf = "this.roleService.roleValue=== 'admin'" [routerLink]="['/user']" class="btn btn-primary me-3">Add New</a>
-            <button class="btn btn-secondary me-5" [routerLink]="['../admin']">Add Admin</button>
+            <a *ngIf = "this.roleService.roleValue=== 'admin'" [routerLink]="['/admin']" class="btn btn-primary me-5">Add Admin</a>&nbsp;
+            
+            <!-- <button type="submit" *ngIf="this.roleService.roleValue=== 'admin'" class="btn btn-primary me-3"
+                                     [routerLink]="['/admin']">Add Admin</button> -->
             <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary me-3">Back</button>&nbsp;
 
             <button type="submit" [routerLink]="['/']" class="btn btn-danger">Logout</button>
