@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AdminRegisterService } from '../service/admin-register.service';
 import { RoleServiceService } from '../service/role-service.service';
-import { User } from '../service/user';
 import { User1 } from '../service/user1';
 
 
@@ -25,9 +24,10 @@ export class AdminTableComponent implements OnInit {
   adminForm:FormGroup|any;
 
   visible!: boolean;
-  constructor(protected adminService: AdminRegisterService, public roleService: RoleServiceService) { }
+  constructor(protected adminService: AdminRegisterService, public roleService: RoleServiceService,private fb :FormBuilder) { }
   ngOnInit(): void {
     console.log("roleValue: "+this.roleService.roleValue);
+
     
     this.adminList();
   }
@@ -48,7 +48,7 @@ export class AdminTableComponent implements OnInit {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.adminService.deleteUserId(_id).subscribe((res) => {
         console.log(res);
-        this.refreshList();  
+        // this.refreshList();  
       });
           }
 
@@ -59,23 +59,31 @@ export class AdminTableComponent implements OnInit {
       this.adminService.admins=res as User1;
     })  
   }
-  public onEdit(id:any){
-    this.adminService.getAdminList();
-    console.log(this.adminService.getThatId);
-    this.adminService.getThatId(id).subscribe(
-      (res:any)=>this.editAdmin(res),
-      (err:any)=>console.log(err)
-    )
+  public onEdit(_id:any){
+    // this.adminService.getAdminList();
+    // console.log(this.adminService.getThatId);
+    // this.adminService.getThatId(id).subscribe(
+    //   // (res)=>console.log(res),
+    //   (res:any)=>this.editAdmin(res),
+    //   (err:any)=>console.log(err)// oninit
+    // )
+    this.adminService.setId=_id
+  console.log(_id)
   }
+  
+
+
+
+
   public editAdmin(admin: User1) {
+    console.log("admin"+JSON.stringify(admin));
     this.adminForm.patchValue({
        _id: admin._id,
        name:admin.name,
        email: admin.email,
        gender:admin.gender,
        phone: admin.phone,
-       topic:admin.topic
-    
+       topic:admin.topic    
     })
   }
   public resetForm(form?:NgForm){

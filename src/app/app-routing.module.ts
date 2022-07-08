@@ -18,10 +18,11 @@ const routes: Routes = [
   {path:'user',component:UserComponent},
   {path:'add-user',component:UserRegistrationComponent},
   {path:'usertable',component:UserTableComponent},
-  {path:'adminrole',component:AdminComponent,},
+  {path:'adminrole',component:AdminComponent},
   {path:'userrole',component:UserComponent},
   {path:'login',component:LoginComponent },
   {path:'register',component:RegisterComponent}
+  
 ];
 
 @NgModule({

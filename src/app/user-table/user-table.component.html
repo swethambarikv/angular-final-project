@@ -42,10 +42,13 @@
             </tbody>
         </table>
         <div class="text-center">
-            <a *ngIf = "this.roleService.roleValue=== 'admin'" [routerLink]="['/user']" class="btn btn-primary me-3">Add New</a>
-            <button class="btn btn-secondary me-5" [routerLink]="['/add-user']">Add User</button>
-            <button type="submit" [routerLink]="['/role']" class="btn btn-primary me-3">Back</button>&nbsp;
-
+            <a  [routerLink]="['/admin']" class="btn btn-primary me-5">Add
+                Admin</a>&nbsp;
+    
+            <!-- <button type="submit" *ngIf="this.roleService.roleValue=== 'admin'" class="btn btn-primary me-3"
+                                         [routerLink]="['/admin']">Add Admin</button> -->
+            <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary me-3">Back</button>&nbsp;
+    
             <button type="submit" [routerLink]="['/']" class="btn btn-danger">Logout</button>
         </div>
     </div>

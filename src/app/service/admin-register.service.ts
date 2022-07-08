@@ -26,6 +26,7 @@ export class AdminRegisterService {
 
   adminValue: any;
   public postAdmin(admin: User1) {
+    console.log("---------ADD ADMIN ----------------");
     console.log('posted')
     console.log(admin);
     return this.http.post(this.baseUrl, admin);
@@ -43,6 +44,7 @@ export class AdminRegisterService {
 
 
   public getAdminById(_id: string) {
+    console.log("ID : ", _id)
     return this.http.get<any>(this.baseUrl + `/${_id}`);
   }
 
@@ -63,6 +65,15 @@ export class AdminRegisterService {
   }
 
   public updateAdmin(form: User1, _id: string) {
+    console.log("----------IN UPDDATE ADMIN ----------------");
+    
     return this.http.put(this.baseUrl + `/${_id}`, form)
+  }
+
+  set setId(_id:string){
+    this.adminId=_id;
+  }
+  get getId(){
+    return this.adminId;
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRegisterService } from '../service/admin-register.service';
 import { User1 } from '../service/user1';
@@ -15,19 +15,48 @@ export class AdminRegistrationComponent implements OnInit {
 
   adminList: User1[] = [];
   userModel!: User1[];
-  constructor(private router: Router, private route: ActivatedRoute, protected adminService: AdminRegisterService) { }
+  adminForm!: FormGroup;
+
+  constructor(private router: Router, private fb: FormBuilder, private route: ActivatedRoute, protected adminService: AdminRegisterService) {
+    this.adminForm = this.fb.group({
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      gender: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required]),
+      practice: new FormControl('', [Validators.required]),
+    })
+  }
 
   _id: string = '';
 
   ngOnInit(): void {
-    console.log(this.adminService.topic);
+    // console.log(this.adminService.topic);
+    this._id = this.adminService.setId
+    this.adminService.getAdminById(this._id).subscribe((res) =>
+      (res: any) => (this.editProduct(res))
+    )
     this.route.params.subscribe(params => {
       this._id = params['_id']
       console.log("route _id : " + this._id);
     });
+    // this._id = this.adminService.getAdminId
+    // this.adminService.getAdminList(this._id).subscribe(
+    //   (res:any)=>this.editAdmin(res),
+
+    //   (err:any)=>console.log(err)
+    // )
 
   }
+  editProduct(product: User1) {
 
+    this.adminForm.patchValue({
+      name: product.name,
+      email: product.email,
+      gender: product.gender,
+      phone: product.phone,
+      practice: product.topic
+    })
+  }
 
   public userData(form: NgForm) {
     console.log("submit form-Admin registration");

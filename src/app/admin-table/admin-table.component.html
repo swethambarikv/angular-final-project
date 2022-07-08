@@ -1,56 +1,56 @@
+<div class="table table-dark" style="margin-top: 20px;">
+    <h1 class="text-center">
+        Admin Details
+    </h1>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Phone no</th>
+                <th>Topic</th>
+                <th>Action</th>
+                <!-- <th *ngIf="this.roleService.roleValue === 'admin'">Action</th> -->
+                <!-- <th><i class="bi bi-pen"></i></th> -->
 
-    <div class="table table-dark" style="margin-top: 20px;">
-        <h1 class="text-center">
-            Admin Details
-        </h1>
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Gender</th>
-                    <th>Phone no</th>
-                    <th>Topic</th>
-                    <th>Action</th>
-                    <th *ngIf="this.roleService.roleValue === 'admin'">Action</th>
-                    <th><i class="bi bi-pen"></i></th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <tr *ngFor="let u of admins['admins']">
-                    <td>{{u._id}}</td>
-                    <td>{{u.name}}</td>
-                    <td>{{u.email}}</td>
-                    <td>{{u.gender}}</td>
-                    <td>{{u.phone}}</td>
-                    <td>{{u.topic}}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <tr *ngFor="let u of admins['admins']">
+                <td>{{u._id}}</td>
+                <td>{{u.name}}</td>
+                <td>{{u.email}}</td>
+                <td>{{u.gender}}</td>
+                <td>{{u.phone}}</td>
+                <td>{{u.topic}}</td>
 
-                    <td><a class="nav-link active" aria-current="page" routerLinkActive="active"
-                            [routerLink]="['/dispaly',u._id]">
-                            <!-- <mat-icon (click)="changeIcon('star')">visibility</mat-icon> -->
-                        </a></td>
-                    <td>
-                        <tr *ngIf = "this.roleService.roleValue === 'admin'">
+                <!-- <td><a class="nav-link active" aria-current="page" routerLinkActive="active"
+                            [routerLink]="['/dispaly',u._id]"> -->
+                <!-- <mat-icon (click)="changeIcon('star')">visibility</mat-icon> -->
+                <!-- </a></td> -->
+                <td>
+                    <!-- <tr *ngIf = "this.roleService.roleValue === 'admin'"> -->
+            <tr>
+                <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp;
+                <button type="submit" (click)="onEdit(u._id)" class="btn btn-info" [routerLink]="['/update',u._id]"> Edit</button>
 
-                        <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp;
-                        <button type="submit" [routerLink]="['/update',u._id]" class="btn btn-info">Edit</button>
+            </tr>
+            </td>
+            </tr>
+        </tbody>
+    </table>
 
-                        </tr>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    
-        <div class="text-center">
-            <a *ngIf = "this.roleService.roleValue=== 'admin'" [routerLink]="['/admin']" class="btn btn-primary me-5">Add Admin</a>&nbsp;
-            
-            <!-- <button type="submit" *ngIf="this.roleService.roleValue=== 'admin'" class="btn btn-primary me-3"
+    <div class="text-center">
+        <a  [routerLink]="['/admin']" class="btn btn-primary me-5">Add
+            Admin</a>&nbsp;
+
+        <!-- <button type="submit" *ngIf="this.roleService.roleValue=== 'admin'" class="btn btn-primary me-3"
                                      [routerLink]="['/admin']">Add Admin</button> -->
-            <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary me-3">Back</button>&nbsp;
+        <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary me-3">Back</button>&nbsp;
 
-            <button type="submit" [routerLink]="['/']" class="btn btn-danger">Logout</button>
-        </div>
+        <button type="submit" [routerLink]="['/']" class="btn btn-danger">Logout</button>
     </div>
+</div>
