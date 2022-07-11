@@ -16,7 +16,8 @@ export class UserService {
   public phone!: User1;
   public topic!: User1;
   public gender!: User1;
-  public password!: User;
+  public password!: User1;
+  public cPassword!: User1;
 
   selectedUser!: User1;
   users!: any[];

@@ -24,7 +24,8 @@ export class UserRegistrationComponent implements OnInit {
       email: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
-      topic: new FormControl('', [Validators.required])
+      topic: new FormControl('', [Validators.required]),
+      password:new FormControl('',[Validators.required])
     })
   }
 
@@ -34,11 +35,14 @@ export class UserRegistrationComponent implements OnInit {
       console.log("User ID: " + this._id);
     });
     this.userService.getUserById(this._id).subscribe(
-      (res: any) => this.editUser(res),
-      (err: any) => console.log("Error in edit user: " + err)
+      (res: any) => {
+        console.log(res);
+        this.editUser(res)},
+      (err: any) => console.log("Error in edit user: " +JSON.stringify( err))
     )
   }
   public editUser(selectUser: User1) {
+    console.log("EDIT USER: " + selectUser)
     this.userForm.patchValue({
       name: selectUser.name,
       email: selectUser.email,

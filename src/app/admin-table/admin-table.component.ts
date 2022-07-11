@@ -72,6 +72,8 @@ export class AdminTableComponent implements OnInit {
       gender: "",
       phone: "",
       topic: "",
+      password:"",
+      cPassword:""
 
     }
   }

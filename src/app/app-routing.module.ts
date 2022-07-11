@@ -10,6 +10,8 @@ import { UserComponent } from './user/user.component';
 import { AuthGuard } from './service/auth.guard';
 import { UserTableComponent } from './user-table/user-table.component';
 import { RegisterComponent } from './register/register.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactComponent } from './contact/contact.component';
 const routes: Routes = [
   {path:'',component: HomeComponent},
   {path:'admin',component:AdminRegistrationComponent},
@@ -22,7 +24,9 @@ const routes: Routes = [
   {path:'adminrole',component:AdminComponent},
   {path:'userrole',component:UserComponent},
   {path:'login',component:LoginComponent },
-  {path:'register',component:RegisterComponent}
+  {path:'register',component:RegisterComponent},
+  {path:'about',component:AboutUsComponent},
+  {path:'contact',component:ContactComponent  }
   
 ];
 

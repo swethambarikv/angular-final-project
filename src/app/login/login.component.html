@@ -27,6 +27,7 @@
                                     <option selected value="">Open this select Role</option>
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
+                                    <option value="guest">Guest</option>
                                 </select>
                                 {{roleservice.roleValue}}
                             </div>
@@ -36,6 +37,8 @@
                                     value="Login" (click)="displayAdmin(loginForm)">Admin Login</button>
                                 <button *ngIf="roleservice.roleValue === 'user'" class="btn btn-primary me-3"
                                     value="Login" (click)="displayUser(loginForm)">User Login</button>
+                                <button *ngIf="roleservice.roleValue === 'guest'" class="btn btn-primary me-3"
+                                    value="Login" (click)="displayUser(loginForm)">Guest Login</button>    
                                 
 
                             </div>

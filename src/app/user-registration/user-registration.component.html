@@ -55,9 +55,11 @@
                 <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
               </div>
 
+
               <div class="form-button mt-3">
-                <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary" (click)="userdata(userForm)"
+                <button type="submit" class="btn btn-primary" (click)="userdata(userForm)"
                   [routerLink]="['/usertable']">submit</button>
+                  <!-- [disabled]="userForm.invalid"  -->
               </div>
             </div>
           </div>

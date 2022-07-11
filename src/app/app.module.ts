@@ -18,6 +18,9 @@ import { AdminRegisterService } from './service/admin-register.service';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './service/auth.service';
 import { TokeninterceptorService } from './tokeninterceptor.service';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { TokeninterceptorService } from './tokeninterceptor.service';
     UserRegistrationComponent,
     AdminTableComponent,
     UserTableComponent,
-    RegisterComponent
+    RegisterComponent,
+    AboutUsComponent,
+    NavBarComponent,
+    ContactComponent
 
   ],
   imports: [

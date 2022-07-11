@@ -18,7 +18,9 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/login']);
 
   }
-  public logOut() { }
+  public logOut() { 
+    this.router.navigate(['/home']);
+  }
   public loggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
