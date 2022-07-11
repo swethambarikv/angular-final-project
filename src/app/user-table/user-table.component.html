@@ -14,7 +14,6 @@
                     <th>Topic</th>
                     <th>Action</th>
 
-                    <!-- <th *ngIf="this.roleService.roleValue === 'user'">Action</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -25,34 +24,18 @@
                     <td>{{u.gender}}</td>
                     <td>{{u.phone}}</td>
                     <td>{{u.topic}}</td>
+                    <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp;
+                    <button type="submit" (click)="onEdit(u._id)" class="btn btn-info"
+                        [routerLink]="['/updateUser',u._id]"> Edit</button>
 
-                    <!-- <td><a class="nav-link active" aria-current="page" routerLinkActive="active"
-                            [routerLink]="['/display',u._id]">
-                             <mat-icon (click)="changeIcon('star')">visibility</mat-icon>
-                        </a></td>
-                    <td>
-                        <tr *ngIf = "this.roleService.roleValue === 'user'">
-
-                        <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp; -->
-                        <!-- <button type="submit" [routerLink]="['/update-add',u._id]" class="btn btn-info">Edit</button> 
-                        <button type="submit" (click)="onEdit(u._id)" class="btn btn-info">Edit</button>
-
-                        </tr> -->
-                    <!-- </td> -->
-                        <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp;
-                        <button type="submit" (click)="onEdit(u._id)" class="btn btn-info" [routerLink]="['/updateUser',u._id]"> Edit</button>
-        
-                    </tr>
+                </tr>
             </tbody>
         </table>
         <div class="text-center">
-            <a  [routerLink]="['/add-user']" class="btn btn-primary me-5">Add
+            <a [routerLink]="['/add-user']" class="btn btn-primary me-5">Add
                 User</a>&nbsp;
-    
-            <!-- <button type="submit" *ngIf="this.roleService.roleValue=== 'admin'" class="btn btn-primary me-3"
-                                         [routerLink]="['/admin']">Add Admin</button> -->
             <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary me-3">Back</button>&nbsp;
-    
+
             <button type="submit" [routerLink]="['/']" class="btn btn-danger">Logout</button>
         </div>
     </div>

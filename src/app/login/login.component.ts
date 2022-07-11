@@ -27,10 +27,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  // readonly baseURL = "http://localhost:8000/login/"
-
-
-
   public displayAdmin(loginForm: NgForm) {
     console.log(loginForm.value)
     this.authService.loginUser(loginForm.value).subscribe(

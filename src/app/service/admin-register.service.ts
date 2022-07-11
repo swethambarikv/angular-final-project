@@ -56,7 +56,7 @@ export class AdminRegisterService {
   public deleteAdmin(_id: string) {
     return this.http.delete(this.baseUrl + `/${_id}`, { responseType: 'text' })
   }
-  get getThatId() {
+  public get getThatId() {
     return this.adminId;
   }
 
@@ -66,7 +66,6 @@ export class AdminRegisterService {
   }
 
   public updateAdmin(form: User1, _id: string) {
-    console.log("----------IN UPDDATE ADMIN ----------------");
     
     return this.http.put(this.baseUrl + `/${_id}`, form)
   }

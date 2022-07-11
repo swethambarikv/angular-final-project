@@ -10,13 +10,13 @@ import { User1 } from './user1';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  _id!: User1;
-  name!: User1;
-  email!: User1;
-  phone!: User1;
-  topic!: User1;
-  gender!: User1;
-  password!: User;
+  public _id!: User1;
+  public name!: User1;
+  public email!: User1;
+  public phone!: User1;
+  public topic!: User1;
+  public gender!: User1;
+  public password!: User;
 
   selectedUser!: User1;
   users!: any[];

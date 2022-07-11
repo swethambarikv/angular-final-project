@@ -38,29 +38,28 @@ export class UserRegistrationComponent implements OnInit {
       (err: any) => console.log("Error in edit user: " + err)
     )
   }
-  editUser(selectUser: User1) {
+  public editUser(selectUser: User1) {
     this.userForm.patchValue({
       name: selectUser.name,
       email: selectUser.email,
       phone: selectUser.phone,
       gender: selectUser.gender,
       topic: selectUser.topic,
-      // password:selectUser.password
     })
   }
   public userdata(userForm: FormGroup) {
     console.log("User form: " + userForm.value);
     console.log(this._id);
-    
+
     if (!this._id) {
       this.userService.postUser(userForm.value).subscribe((res) => {
         console.log("post user: " + res);
         alert("User added!")
       })
     }
-    else{
-      this.userService.putUser(this._id,userForm.value).subscribe((res)=>{
-        console.log("PUT user: "+res);
+    else {
+      this.userService.putUser(this._id, userForm.value).subscribe((res) => {
+        console.log("PUT user: " + res);
         alert("Update user!")
       })
     }

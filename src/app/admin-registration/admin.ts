@@ -1,8 +1,8 @@
 export class admin {
-    name: string = '';
-    email: string = '';
-    phone: string = '';
-    gender: string = '';
-    password: string = '';
-    topic: string = '';
+    public name: string = '';
+    public email: string = '';
+    public phone: string = '';
+    public gender: string = '';
+    public password: string = '';
+    public topic: string = '';
 }

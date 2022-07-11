@@ -16,12 +16,7 @@ export class UserTableComponent implements OnInit {
   visible!: boolean;
   constructor(public roleService: RoleServiceService, private userService: UserService, private router: Router) { }
   ngOnInit(): void {
-    // this.userService.getUser().subscribe((res)=>{
-    //   console.log(res);
-    //   this.users = res
-    // })
 
-    // console.log(this.userForm)
     this.userList();
   }
 
@@ -40,14 +35,12 @@ export class UserTableComponent implements OnInit {
   public onEdit(_id: any) {
     this.userService.setId = _id
     console.log(_id);
-    // this.router.navigate['/updateUser']
   }
 
   public remove(_id: any) {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.userService.deleteUser(_id).subscribe((res) => {
         console.log(res);
-        // this.refreshList();  
       });
     }
   }
