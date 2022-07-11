@@ -1,5 +1,5 @@
 <div class="user-reg-form">
-  <form #userForm="ngForm">
+  <form [formGroup]="userForm">
     <div class="form-body">
       <div class="row">
         <div class="form-holder">
@@ -9,40 +9,40 @@
               <p>Fill in the data below.</p>
               <div class="col-md-12">
                 <input class="form-control" type="text" name="name" name="name" placeholder="Full Name" required
-                  [(ngModel)]="userService.name" required>
+                  formControlName="name" required>
                 <div class="valid-feedback">Name field is valid!</div>
                 <div class="invalid-feedback">Name field cannot be blank!</div>
               </div>
 
               <div class="col-md-12">
-                <input class="form-control" type="email" name="email" #email="ngModel" [(ngModel)]="userService.email"
+                <input class="form-control" type="email" name="email"  formControlName="email"
                   placeholder="E-mail Address" required>
                 <div class="valid-feedback">Email field is valid!</div>
                 <div class="invalid-feedback">Email field cannot be blank!</div>
               </div>
 
-              <div class="col-md-12">
-                <input class="form-control" type="password" name="password" placeholder="Password" required>
+              <!-- <div class="col-md-12">
+                <input class="form-control" type="password" name="password" placeholder="Password" required formControlName="">
                 <div class="valid-feedback">Password field is valid!</div>
                 <div class="invalid-feedback">Password field cannot be blank!</div>
-              </div>
+              </div> -->
 
               <div class="col-md-12 mt-3">
                 <label class="mb-3 mr-1" for="gender">Gender</label>
 
-                <div class="btn-check" name="gender" #gender value="male" id="male" [(ngModel)]="userService.gender"
-                  autocomplete="off" required></div>
+                <input type="radio" class="btn-check" name="gender" value="male" id="male"
+                  formControlName="gender" autocomplete="off" required>
                 <label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
 
-                <div class="btn-check" name="gender" #gender value="female" id="female" [(ngModel)]="userService.gender"
-                  autocomplete="off" required></div>
+                <input type="radio" class="btn-check" name="gender"  value="female" id="female"
+                  formControlName="gender" autocomplete="off" required>
                 <label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
 
-                <div class="btn-check" name="gender" id="secret" autocomplete="off" required>
-                  <label class="btn btn-sm btn-outline-secondary" for="secret">Secret</label>
-                </div>
+                <!-- <input type="radio" class="btn-check" name="gender" formControlName="gender" id="secret"
+                  autocomplete="off" required>
+                <label class="btn btn-sm btn-outline-secondary" for="secret">Secret</label>
                 <div class="valid-feedback mv-up">You selected a gender!</div>
-                <div class="invalid-feedback mv-up">Please select a gender!</div>
+                <div class="invalid-feedback mv-up">Please select a gender!</div> -->
               </div>
 
 
@@ -51,21 +51,21 @@
                 <label class="mb-3 mr-1" for="phone">Phone</label>
 
 
-                <input type="tel" #phone="ngModel" pattern="^\d{10}$" class="col-md-12" required
-                  [class.is-invalid]="phone.invalid && phone.touched" name="phone" [(ngModel)]="userService.phone">
-                <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">PhoneNumber is
-                  required</small>
+                <input type="tel"  pattern="^\d{10}$" class="col-md-12" required
+               formControlName="phone">
+                <!-- <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">PhoneNumber is
+                  required</small> -->
               </div>
 
               <div class="form-groupcol-md-12 mt-3">
                 <label class="mb-3 mr-1">Language</label>
-                <select class="custom-select" [class.is-invalid]="topic.invalid && topic.untouched" required
-                  #topic="ngModel" name="topic" [(ngModel)]="userService.topic">
+                <select class="custom-select"  required
+                  name="topic" formControlName="topic">
                   <option hidden value="">Select any one</option>
                   <option *ngFor="let topic of topics">{{topic}}</option>
                 </select>
-                <small class="text-danger" [class.d-none]="topic.valid || topic.untouched">Please choose a
-                  topic</small>
+                <!-- <small class="text-danger" [class.d-none]="topic.valid || topic.untouched">Please choose a
+                  topic</small> -->
               </div>
 
               <div class="form-check">
@@ -78,8 +78,8 @@
 
 
               <div class="form-button mt-3">
-                <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary"
-                  (click)="userdata(userForm)">submit</button>
+                <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary"
+                  (click)="userdata(userForm)" [routerLink]="['/usertable']">submit</button>
               </div>
               <!-- </form> -->
             </div>

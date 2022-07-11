@@ -10,40 +10,44 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
-                    <th>Mobile</th>
+                    <th>Phone</th>
                     <th>Topic</th>
-                    <th *ngIf="this.roleService.roleValue === 'user'">Action</th>
+                    <th>Action</th>
+
+                    <!-- <th *ngIf="this.roleService.roleValue === 'user'">Action</th> -->
                 </tr>
             </thead>
             <tbody>
-                <tr>
                 <tr *ngFor="let u of users['users']">
                     <td>{{u._id}}</td>
                     <td>{{u.name}}</td>
                     <td>{{u.email}}</td>
                     <td>{{u.gender}}</td>
-                    <td>{{u.mobile}}</td>
+                    <td>{{u.phone}}</td>
                     <td>{{u.topic}}</td>
 
-                    <td><a class="nav-link active" aria-current="page" routerLinkActive="active"
+                    <!-- <td><a class="nav-link active" aria-current="page" routerLinkActive="active"
                             [routerLink]="['/display',u._id]">
-                            <!-- <mat-icon (click)="changeIcon('star')">visibility</mat-icon> -->
+                             <mat-icon (click)="changeIcon('star')">visibility</mat-icon>
                         </a></td>
                     <td>
                         <tr *ngIf = "this.roleService.roleValue === 'user'">
 
-                        <!-- <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp; -->
-                        <!-- <button type="submit" [routerLink]="['/update-add',u._id]" class="btn btn-info">Edit</button> -->
+                        <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp; -->
+                        <!-- <button type="submit" [routerLink]="['/update-add',u._id]" class="btn btn-info">Edit</button> 
                         <button type="submit" (click)="onEdit(u._id)" class="btn btn-info">Edit</button>
 
-                        </tr>
-                    </td>
-                </tr>
+                        </tr> -->
+                    <!-- </td> -->
+                        <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp;
+                        <button type="submit" (click)="onEdit(u._id)" class="btn btn-info" [routerLink]="['/updateUser',u._id]"> Edit</button>
+        
+                    </tr>
             </tbody>
         </table>
         <div class="text-center">
-            <a  [routerLink]="['/admin']" class="btn btn-primary me-5">Add
-                Admin</a>&nbsp;
+            <a  [routerLink]="['/add-user']" class="btn btn-primary me-5">Add
+                User</a>&nbsp;
     
             <!-- <button type="submit" *ngIf="this.roleService.roleValue=== 'admin'" class="btn btn-primary me-3"
                                          [routerLink]="['/admin']">Add Admin</button> -->

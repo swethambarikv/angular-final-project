@@ -16,6 +16,7 @@ const routes: Routes = [
   {path:'update/:_id',component:AdminRegistrationComponent},
   {path:'admintable',component:AdminTableComponent},
   {path:'user',component:UserComponent},
+  {path:'updateUser/:_id',component:UserRegistrationComponent},
   {path:'add-user',component:UserRegistrationComponent},
   {path:'usertable',component:UserTableComponent},
   {path:'adminrole',component:AdminComponent},

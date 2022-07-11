@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { User } from './user';
 import { User1 } from './user1';
 @Injectable({
@@ -17,9 +18,9 @@ export class AdminRegisterService {
   public role!: User1;
   public username!: User;
   public password!: User;
-  public user!: any;
+  // public user!: any;
 
-  public adminId: any;
+  public adminId!:string;
   readonly baseUrl = "http://localhost:8000/admin";
   public selectedAdmin!: User1;
   public admins!: any;
@@ -31,8 +32,8 @@ export class AdminRegisterService {
     console.log(admin);
     return this.http.post(this.baseUrl, admin);
   }
-  public getThatId(id: any) {
-    return this.http.get(this.baseUrl + `/${id}`)
+  public getAdminId(_id:string ) {
+    return this.http.get(this.baseUrl + `/${_id}`)
   }
 
   public getAdminList() {
@@ -48,14 +49,14 @@ export class AdminRegisterService {
     return this.http.get<any>(this.baseUrl + `/${_id}`);
   }
 
-  public putAdmin(admin: User1) {
-    console.log("Put request-Admin");
-    return this.http.put(this.baseUrl + `/${this.getThatId}`, admin, { responseType: 'text' });
+  public putAdmin(_id:string,adminForm:NgForm) {
+    console.log("Put request-Admin"+_id+" "+adminForm);
+    return this.http.put(this.baseUrl +`/${_id}`,adminForm);
   }
   public deleteAdmin(_id: string) {
     return this.http.delete(this.baseUrl + `/${_id}`, { responseType: 'text' })
   }
-  get getAdminId() {
+  get getThatId() {
     return this.adminId;
   }
 

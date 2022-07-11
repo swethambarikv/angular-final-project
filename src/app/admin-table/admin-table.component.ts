@@ -21,14 +21,12 @@ export class AdminTableComponent implements OnInit {
   public practice: any;
 
   public admins: any = [];
-  adminForm:FormGroup|any;
+  adminForm: FormGroup | any;
 
   visible!: boolean;
-  constructor(protected adminService: AdminRegisterService, public roleService: RoleServiceService,private fb :FormBuilder) { }
+  constructor(protected adminService: AdminRegisterService, public roleService: RoleServiceService, private fb: FormBuilder) { }
   ngOnInit(): void {
-    console.log("roleValue: "+this.roleService.roleValue);
-
-    
+    console.log("roleValue: " + this.roleService.roleValue);
     this.adminList();
   }
   public adminList() {
@@ -50,52 +48,30 @@ export class AdminTableComponent implements OnInit {
         console.log(res);
         // this.refreshList();  
       });
-          }
-
-    
+    }
   }
-  public refreshList(){
-    this.adminService.getAdminList().subscribe((res)=>{
-      this.adminService.admins=res as User1;
-    })  
-  }
-  public onEdit(_id:any){
-    // this.adminService.getAdminList();
-    // console.log(this.adminService.getThatId);
-    // this.adminService.getThatId(id).subscribe(
-    //   // (res)=>console.log(res),
-    //   (res:any)=>this.editAdmin(res),
-    //   (err:any)=>console.log(err)// oninit
-    // )
-    this.adminService.setId=_id
-  console.log(_id)
-  }
-  
-
-
-
-
-  public editAdmin(admin: User1) {
-    console.log("admin"+JSON.stringify(admin));
-    this.adminForm.patchValue({
-       _id: admin._id,
-       name:admin.name,
-       email: admin.email,
-       gender:admin.gender,
-       phone: admin.phone,
-       topic:admin.topic    
+  public refreshList() {
+    this.adminService.getAdminList().subscribe((res) => {
+      this.adminService.admins = res as User1;
     })
   }
-  public resetForm(form?:NgForm){
-    if(form)
-    form.reset();
-    this.adminService.selectedAdmin={
-      _id:"",
-      name:"",
-      email:"",
-      gender:"",
-      phone:"",
-      topic:"",
+  public onEdit(_id: any) {
+    this.adminService.setId = _id
+    console.log(_id)
+  }
+
+
+
+  public resetForm(form?: NgForm) {
+    if (form)
+      form.reset();
+    this.adminService.selectedAdmin = {
+      _id: "",
+      name: "",
+      email: "",
+      gender: "",
+      phone: "",
+      topic: "",
 
     }
   }
