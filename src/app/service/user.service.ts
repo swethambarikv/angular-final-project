@@ -25,10 +25,6 @@ export class UserService {
 
   readonly baseUrl = "http://localhost:8000/users";
 
-
-  // public userToEdit() {
-  //   return this.selectedUser._id;
-  // }
   public getUserList() {
     return this.http.get<User1>(this.baseUrl);
   }
@@ -43,11 +39,9 @@ export class UserService {
 
     console.log("PUT user: " + _id + " " + JSON.stringify(userForm));
     return this.http.put(this.baseUrl + `/${_id}`, userForm)
-    // console.log("User");
-    // return this.http.put(this.baseUrl + 'update/' + `${user._id}`, user, { responseType: 'text' });
   }
   public deleteUser(_id: string) {
-    return this.http.delete(this.baseUrl +`/${_id}`,{responseType:'text'})
+    return this.http.delete(this.baseUrl + `/${_id}`, { responseType: 'text' })
   }
   set setId(_id: string) {
     this.userId = _id;
