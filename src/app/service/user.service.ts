@@ -34,7 +34,10 @@ export class UserService {
   }
   public postUser(user: User1) {
     console.log(user);
-    return this.http.post(this.baseUrl, user);
+    // return this.http.post(`${this.baseUrl}/register`, user);
+    return this.http.post<User1>(this.baseUrl+`/register`,user);
+    // return this.http.post(this.baseUrl+`/register`,user);
+
   }
   public putUser(_id: string, userForm: NgForm) {
 

@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
     console.log(loginForm.value)
     this.authService.loginUser(loginForm.value).subscribe(
       res => {
-        localStorage.setItem('token', res.token)
+        localStorage.setItem('token',res.token)
 
-        console.log(res)
+        console.log("Display Admin: "+res.users)
       },
       error => {
         console.log(error)
@@ -44,6 +44,15 @@ export class LoginComponent implements OnInit {
   }
   public displayUser(loginForm: NgForm) {
     console.log(loginForm.value)
+    this.authService.loginUser(loginForm.value).subscribe(
+      res=>{
+        localStorage.setItem('token',res.token)
+        console.log("Display User: "+res.users)
+      },
+      error=>{
+        console.log("Display user error: "+error)
+      }
+    )
     this.router.navigate(['/userrole']);
   }
   public getToken() {

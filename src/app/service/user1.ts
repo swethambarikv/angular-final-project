@@ -6,6 +6,6 @@ export class User1 {
    public gender: string = '';
    public phone: string  = '';
    public topic:string = '';
-   public cPassword:string='';
    public password:string='';
+   public role:string='';
 }

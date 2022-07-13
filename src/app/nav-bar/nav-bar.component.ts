@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
+import { LoginService } from '../service/login.service';
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -7,7 +9,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private router:Router,private route: ActivatedRoute) { }
+  constructor(private router:Router,private route: ActivatedRoute , public loginService : LoginService) { }
 
   ngOnInit(): void {
   }
@@ -17,5 +19,9 @@ export class NavBarComponent implements OnInit {
   public log(){
     this.router.navigate(['home'])
   }
+public logout(){
+  localStorage.removeItem('token')
+  this.router.navigate([''])
+}
 
 }

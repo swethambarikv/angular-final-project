@@ -1,8 +1,11 @@
 <div>
     <div class="table table-dark" style="margin-top: 20px;">
         <h2 class="text-center">
-            User Details
+            Details
         </h2>
+        <!-- <button class="btn btn-light">Edit Profile</button> -->
+
+
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -18,6 +21,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let u of users['users']">
+
                     <td>{{u._id}}</td>
                     <td>{{u.name}}</td>
                     <td>{{u.email}}</td>
@@ -25,8 +29,7 @@
                     <td>{{u.phone}}</td>
                     <td>{{u.topic}}</td>
                     <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp;
-                    <button type="submit" (click)="onEdit(u._id)" class="btn btn-info"
-                        [routerLink]="['/updateUser',u._id]"> Edit</button>
+                    <button type="submit" (click)="onEdit(u._id)" class="btn btn-info" [routerLink]="['/updateUser',u._id]"> Edit</button>
 
                 </tr>
             </tbody>
@@ -36,7 +39,7 @@
                 User</a>&nbsp;
             <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary me-3">Back</button>&nbsp;
 
-            <button type="submit" [routerLink]="['/']" class="btn btn-danger">Logout</button>
+            <!-- <button type="submit"  [routerLink]="['/']" class="btn btn-danger">Logout</button> -->
         </div>
     </div>
 </div>

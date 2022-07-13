@@ -16,7 +16,7 @@ export class UserTableComponent implements OnInit {
   visible!: boolean;
   constructor(public roleService: RoleServiceService, private userService: UserService, private router: Router) { }
   ngOnInit(): void {
-
+    console.log("User table rolevalue:" + this.roleService.roleValue)
     this.userList();
   }
 

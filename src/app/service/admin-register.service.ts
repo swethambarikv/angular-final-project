@@ -21,7 +21,7 @@ export class AdminRegisterService {
   // public user!: any;
 
   public adminId!:string;
-  readonly baseUrl = "http://localhost:8000/admin";
+  readonly baseUrl = "http://localhost:8000/users";
   public selectedAdmin!: User1;
   public admins!: any;
 

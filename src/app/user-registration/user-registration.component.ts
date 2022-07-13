@@ -25,7 +25,8 @@ export class UserRegistrationComponent implements OnInit {
       phone: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
       topic: new FormControl('', [Validators.required]),
-      password:new FormControl('',[Validators.required])
+      password: new FormControl('', [Validators.required]),
+      role: new FormControl('user', [])
     })
   }
 
@@ -34,12 +35,15 @@ export class UserRegistrationComponent implements OnInit {
       this._id = params['_id'];
       console.log("User ID: " + this._id);
     });
-    this.userService.getUserById(this._id).subscribe(
-      (res: any) => {
-        console.log(res);
-        this.editUser(res)},
-      (err: any) => console.log("Error in edit user: " +JSON.stringify( err))
-    )
+    if (this._id != null) {
+      this.userService.getUserById(this._id).subscribe(
+        (res: any) => {
+          console.log("RESPONSE:" + res);
+          this.editUser(res)
+        },
+        (err: any) => console.log("Error in edit user: " + JSON.stringify(err))
+      )
+    }
   }
   public editUser(selectUser: User1) {
     console.log("EDIT USER: " + selectUser)
@@ -48,13 +52,15 @@ export class UserRegistrationComponent implements OnInit {
       email: selectUser.email,
       phone: selectUser.phone,
       gender: selectUser.gender,
-      topic: selectUser.topic,
+      topic: selectUser.topic
     })
   }
   public userdata(userForm: FormGroup) {
-    console.log("User form: " + userForm.value);
-    console.log(this._id);
+    // console.log(userForm.value);
 
+    console.log(this._id);
+    this.userForm.role = "user"
+    console.log(userForm.value)
     if (!this._id) {
       this.userService.postUser(userForm.value).subscribe((res) => {
         console.log("post user: " + res);

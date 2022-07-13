@@ -10,8 +10,8 @@ import { User1 } from './user1';
 export class AuthService {
 
 
-  private registerUrl = "http://localhost:8000/api/register"
-  private loginUrl = "http://localhost:8000/api/login"
+  private registerUrl = "http://localhost:8000/users/register"
+  private loginUrl = "http://localhost:8000/users/login"
 
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -23,6 +23,8 @@ export class AuthService {
     return this.http.post(this.registerUrl, registeredUser)
   }
   public loginUser(user: User) {
+    console.log(user);
+    
     return this.http.post<any>(this.loginUrl, user);
 
   }

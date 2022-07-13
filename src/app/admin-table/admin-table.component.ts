@@ -32,6 +32,7 @@ export class AdminTableComponent implements OnInit {
   public adminList() {
     this.adminService.getAdminList().subscribe((data) => {
       JSON.stringify(data)
+      console.log("LIST : ", data)
       this.admins = data;
       if (data !== null) {
         this.visible = false;
@@ -52,6 +53,7 @@ export class AdminTableComponent implements OnInit {
   }
   public refreshList() {
     this.adminService.getAdminList().subscribe((res) => {
+      console.log("TABLE : "+res)
       this.adminService.admins = res as User1;
     })
   }
@@ -73,7 +75,7 @@ export class AdminTableComponent implements OnInit {
       phone: "",
       topic: "",
       password:"",
-      cPassword:""
+      role:""
 
     }
   }

@@ -14,15 +14,15 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 const routes: Routes = [
   {path:'',component: HomeComponent},
-  {path:'admin',component:AdminRegistrationComponent},
-  {path:'update/:_id',component:AdminRegistrationComponent},
-  {path:'admintable',component:AdminTableComponent},
-  {path:'user',component:UserComponent},
-  {path:'updateUser/:_id',component:UserRegistrationComponent},
-  {path:'add-user',component:UserRegistrationComponent},
-  {path:'usertable',component:UserTableComponent},
-  {path:'adminrole',component:AdminComponent},
-  {path:'userrole',component:UserComponent},
+  {path:'admin',component:AdminRegistrationComponent,canActivate:[AuthGuard]},
+  {path:'update/:_id',component:AdminRegistrationComponent,canActivate:[AuthGuard]},
+  {path:'admintable',component:AdminTableComponent,canActivate:[AuthGuard]},
+  {path:'user',component:UserComponent,canActivate:[AuthGuard]},
+  {path:'updateUser/:_id',component:UserRegistrationComponent,canActivate:[AuthGuard]},
+  {path:'add-user',component:UserRegistrationComponent,canActivate:[AuthGuard]},
+  {path:'usertable',component:UserTableComponent,canActivate:[AuthGuard]},
+  {path:'adminrole',component:AdminComponent,canActivate:[AuthGuard]},
+  {path:'userrole',component:UserComponent,canActivate:[AuthGuard]},
   {path:'login',component:LoginComponent },
   {path:'register',component:RegisterComponent},
   {path:'about',component:AboutUsComponent},
@@ -32,7 +32,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  providers: [AuthGuard]
+  exports: [RouterModule]
+ 
 })
 export class AppRoutingModule { }

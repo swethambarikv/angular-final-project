@@ -3,10 +3,10 @@
       <h3>Welcome to <strong>EMPLOYEE MANGEMENT SYSTEM</strong></h3>
       <h1>Manage Employee Details</h1>
       <h2>Your work environment can greatly influence how you feel about your job.</h2>
-      <a type="submit" [routerLink]="['/login']" class="btn-get-started scrollto mb-3">Login</a>
-      <a type="submit" [routerLink]="['/register']" class="btn-get-started scrollto">Register</a>
-      <a *ngIf="!authService.loggedIn()" class="tn-get-started scrollto mb-3"
-                                     (click)="logOut()">Logout</a>
+      <a type="submit"  *ngIf="!loginService.loggedIn()" [routerLink]="['/login']" class="btn-get-started scrollto mb-3">Login</a>
+      <a type="submit"  *ngIf="!loginService.loggedIn()" [routerLink]="['/register']" class="btn-get-started scrollto">Register</a>
+      <!-- <a *ngIf="!authService.loggedIn()" class="tn-get-started scrollto mb-3"
+                                     (click)="logOut()">Logout</a> -->
     </div>
   </section>
 

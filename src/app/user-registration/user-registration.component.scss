@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
-
 .user-reg-form {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -63,8 +62,8 @@
     font-weight: 600;
     margin-bottom: 5px;
 }
-user
-.form-content h3.form-title {
+
+user .form-content h3.form-title {
     margin-bottom: 30px;
 }
 
@@ -76,7 +75,6 @@ user
     line-height: 20px;
     margin-bottom: 30px;
 }
-
 
 .user-reg-form .form-content label,
 .was-validated .form-check-input:invalid~.form-check-label,
@@ -102,7 +100,6 @@ user
     transition: all 0.3s ease;
     margin-top: 16px;
 }
-
 
 .btn-primary {
     background-color: #6C757D;
