@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRegisterService } from '../service/admin-register.service';
 import { admin } from '../admin-registration/admin'
-// import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-admin-registration',

@@ -1,7 +1,7 @@
 <div class="table table-dark" style="margin-top: 20px;">
-    <h1 class="text-center">
-         Details
-    </h1>
+    <h2 class="text-center">
+        <strong>Admin table</strong>
+    </h2>
     <table class="table table-dark">
         <thead>
             <tr>
@@ -17,33 +17,34 @@
         </thead>
         <tbody>
             <tr>
-            <tr *ngFor="let u of admins['users']">
-                <td>{{u._id}}</td>
-                <td>{{u.name}}</td>
-                <td>{{u.email}}</td>
-                <td>{{u.gender}}</td>
-                <td>{{u.phone}}</td>
-                <td>{{u.topic}}</td>
-                <td>
+                <tr *ngFor="let u of admins['admin']">
+                    <td>{{u._id}}</td>
+                    <td>{{u.name}}</td>
+                    <td>{{u.email}}</td>
+                    <td>{{u.gender}}</td>
+                    <td>{{u.phone}}</td>
+                    <td>{{u.topic}}</td>
 
-            <tr>
-                <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp;
-                <button type="submit" (click)="onEdit(u._id)" class="btn btn-info" [routerLink]="['/update',u._id]">
-                    Edit</button>
+                    <td>
 
-            </tr>
-            </td>
-            </tr>
+                        <tr>
+                            <button type=" submit " (click)="remove(u._id) " class="btn btn-danger  mr-3">Remove</button>
+                            <button type=" submit " (click)="onEdit(u._id) " class="btn btn-info " [routerLink]="[ '/update ',u._id] "> Edit
+                            </button>
+
+                        </tr>
+                    </td>
+                </tr>
         </tbody>
     </table>
 
-    <div class="text-center">
-        <a [routerLink]="['/admin']" class="btn btn-primary me-5">Add
+    <div class="text-center ">
+        <a [routerLink]="[ '/admin '] " class="btn btn-primary me-5 ">Add
             Admin</a>&nbsp;
 
 
-        <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary me-3">Back</button>&nbsp;
+        <button type="submit " [routerLink]="[ '/adminrole '] " class="btn btn-primary me-3 ">Back</button>&nbsp;
 
-        <!-- <button type="submit" [routerLink]="['/']" class="btn btn-danger">Logout</button> -->
+        <!-- <button type="submit " [routerLink]="[ '/ '] " class="btn btn-danger ">Logout</button> -->
     </div>
 </div>

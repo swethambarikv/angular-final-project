@@ -24,7 +24,7 @@ export class UserService {
   public userId!: string;
 
 
-  readonly baseUrl = "http://localhost:8000/users";
+  readonly baseUrl = "http://localhost:8000/users/user-table";
 
   public getUserList() {
     return this.http.get<User1>(this.baseUrl);

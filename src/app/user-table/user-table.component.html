@@ -1,7 +1,7 @@
 <div>
     <div class="table table-dark" style="margin-top: 20px;">
         <h2 class="text-center">
-            Details
+            <strong>User table</strong>
         </h2>
         <!-- <button class="btn btn-light">Edit Profile</button> -->
 
@@ -15,7 +15,7 @@
                     <th>Gender</th>
                     <th>Phone</th>
                     <th>Topic</th>
-                    <th>Action</th>
+                    <!-- <th>Action</th> -->
 
                 </tr>
             </thead>
@@ -28,18 +28,20 @@
                     <td>{{u.gender}}</td>
                     <td>{{u.phone}}</td>
                     <td>{{u.topic}}</td>
-                    <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>&nbsp;
-                    <button type="submit" (click)="onEdit(u._id)" class="btn btn-info" [routerLink]="['/updateUser',u._id]"> Edit</button>
-
+                    <div *ngIf="roleService.roleValue=='Admin'">
+                        <button type="submit" (click)="remove(u._id)" class="btn btn-danger">Remove</button>
+                        <button type="submit" (click)="onEdit(u._id)" class="btn btn-info" [routerLink]="['/updateUser',u._id]"> Edit</button>
+                    </div>
                 </tr>
             </tbody>
         </table>
-        <div class="text-center">
-            <a [routerLink]="['/add-user']" class="btn btn-primary me-5">Add
-                User</a>&nbsp;
-            <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary me-3">Back</button>&nbsp;
-
-            <!-- <button type="submit"  [routerLink]="['/']" class="btn btn-danger">Logout</button> -->
+        <div class="text-center" *ngIf="roleService.roleValue=='Admin'">
+            <button [routerLink]="['/add-user']" class="btn btn-primary me-5">Add
+                User</button>
         </div>
     </div>
+    <div class="text-center">
+        <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary">Back</button>&nbsp;
+    </div>
+    <!-- <button type="submit"  [routerLink]="['/']" class="btn btn-danger">Logout</button> -->
 </div>
