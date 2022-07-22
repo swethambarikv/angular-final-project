@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { AdminRegisterService } from '../service/admin-register.service';
 import { RoleServiceService } from '../service/role-service.service';
 import { User1 } from '../service/user1';
@@ -32,7 +32,6 @@ export class AdminTableComponent implements OnInit {
   public adminList() {
     this.adminService.getAdminList().subscribe((data) => {
       JSON.stringify(data)
-      console.log("LIST : ", data)
       this.admins = data;
       if (data !== null) {
         this.visible = false;
@@ -46,20 +45,16 @@ export class AdminTableComponent implements OnInit {
   public remove(_id: any) {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.adminService.deleteUserId(_id).subscribe((res) => {
-        console.log(res);
-        // this.refreshList();  
       });
     }
   }
   public refreshList() {
     this.adminService.getAdminList().subscribe((res) => {
-      console.log("TABLE : "+res)
       this.adminService.admins = res as User1;
     })
   }
   public onEdit(_id: any) {
     this.adminService.setId = _id
-    console.log(_id)
   }
 
 

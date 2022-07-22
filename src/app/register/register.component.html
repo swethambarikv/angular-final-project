@@ -9,51 +9,64 @@
                         <form class="requires-validation" novalidate #registerForm="ngForm">
                             <div class="col-md-12">
                                 <label>Name</label>
-                                <input [(ngModel)]="userService.name" name="name" type="text" placeholder="Enter the Name " class="form-control rounded-0" required>
-                                <div class="valid-feedback">Name field is valid!</div>
-                                <div class="invalid-feedback">Name field cannot be blank!</div>
+                                <input [(ngModel)]="userService.name" #name="ngModel" name="name" type="text"
+                                    placeholder="Enter the Name " class="form-control rounded-0" required
+                                    pattern="^[A-Za-z]{2,}$" [class.is-invalid]="name.invalid && name.touched">
+                                <small *ngIf="name.errors?.['required']" class="text-danger"
+                                    [class.d-none]="name.untouched">Enter your name</small>
+                                <small *ngIf="name.errors?.['pattern']" class="text-danger"
+                                    [class.d-none]="name.untouched||name.valid">Name should only contain Alphabets
+                                </small>
                             </div>
 
                             <div class="col-md-12">
                                 <label>Email</label>
-                                <input [(ngModel)]="userService.email" name="email" type="text" placeholder="Enter the Mail ID" class="form-control rounded-0" required>
-                                <div class="valid-feedback">Email field is valid!</div>
-                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                                <input [(ngModel)]="userService.email" name="email" type="text" #email="ngModel"
+                                    placeholder="Enter the Mail ID" class="form-control rounded-0" required
+                                    pattern="^[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                    [class.is-invalid]="email.invalid &&email.touched">
+
+                                <small *ngIf="email.errors?.['required']" class="text-danger"
+                                    [class.d-none]="email.untouched">
+                                    Enter your Email Id</small>
+                                <small *ngIf="email.errors?.['pattern']" class="text-danger"
+                                    [class.d-none]="email.untouched||email.valid">Invalid Email</small>
                             </div>
 
                             <div class="col-md-12">
                                 <label>Password</label>
-                                <input [(ngModel)]="userService.password" name="password" type="password" placeholder="Enter the Password" class="form-control rounded-0" (keyup)="checkpass($event)" required>
+                                <input [(ngModel)]="userService.password" name="password" type="password"
+                                    pattern="^([A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" #password="ngModel"
+                                    [class.is-invalid]="password.invalid && password.touched"
+                                    placeholder="Enter the Password" class="form-control rounded-0"
+                                    (keyup)="checkpass($event)" required>
 
-                                <div class="valid-feedback">Password field is valid!</div>
-                                <div class="invalid-feedback">Password field cannot be blank!</div>
+                                <small class="text-danger" *ngIf="password.errors?.['required']"
+                                    [class.d-none]="password.untouched">Enter
+                                    your Password</small>
+                                <small *ngIf="password.errors?.['pattern']" class="text-danger"
+                                    [class.d-none]="password.untouched||password.valid">Password must be Alphanumeric
+                                    and contain
+                                    atleast 8 letters</small>
                             </div>
-                            <!-- <div class="col-md-12">
-                                <label> Confirm Password</label>
-                                <input  [(ngModel)]="userService.cPassword" name="cPassword" type="password" placeholder="Confirm Password" class="form-control rounded-0" required>
 
-                                <div class="valid-feedback">Password matches!</div>
-                                <div class="invalid-feedback">Password does not match!</div>
-                            </div> -->
                             <br>
                             <div class="col-md-12 mt-3">
                                 <label class="mb-3 mr-1" for="phone">Phone</label>
-                                <input type="tel" pattern="^\d{10}$" class="col-md-12" required name="phone" [(ngModel)]="userService.phone">
+                                <input type="tel" pattern="^\d{10}$" class="col-md-12" required name="phone"
+                                    [(ngModel)]="userService.phone">
                             </div>
                             <br>
                             <div class="col-md-12 mt-3">
                                 <label class="mb-3 mr-1" for="gender">Gender</label>
 
-                                <input type="radio" class="btn-check" name="gender" value="male" id="male" [(ngModel)]="userService.gender" autocomplete="off" required>
+                                <input type="radio" class="btn-check" name="gender" value="male" id="male"
+                                    [(ngModel)]="userService.gender" autocomplete="off" required>
                                 <label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
 
-                                <input type="radio" class="btn-check" name="gender" value="female" id="female" [(ngModel)]="userService.gender" autocomplete="off" required>
+                                <input type="radio" class="btn-check" name="gender" value="female" id="female"
+                                    [(ngModel)]="userService.gender" autocomplete="off" required>
                                 <label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
-
-                                <!-- <input type="radio" class="btn-check" name="gender" 
-                                [(ngModel)]="userService.gender" id="secret"
-                                    autocomplete="off" required> -->
-                                <!-- <label class="btn btn-sm btn-outline-secondary" for="secret">Secret</label> -->
                                 <div class="valid-feedback mv-up">You selected a gender!</div>
                                 <div class="invalid-feedback mv-up">Please select a gender!</div>
                             </div>
@@ -61,26 +74,37 @@
 
                             <div class="col-md-12 mt-3">
                                 <label class="mb-3 mr-1">Topic</label>
-                                <select class="custom-select" required name="topic" [(ngModel)]="userService.topic">
+                                <select #topic="ngModel" class="custom-select" required name="topic"
+                                    [(ngModel)]="userService.topic" [class.is-invalid]="topic.invalid && topic.touched">
                                     <option hidden value="">Select any one</option>
                                     <option *ngFor="let topic of topics">{{topic}}</option>
                                 </select>
+                                <small class="text-danger" [class.d-none]="topic.valid||topic.untouched">Select
+                                    Topic</small>
+
                             </div>
                             <div class="col-md-12">
                                 <label class="mb-3 mr-1">Role</label>
 
-                                <select class="form-select" id="role" name="role" placeholder="Select the Role" aria-label="Default select example" [(ngModel)]="roleservice.roleValue" value="role1" required>
-                                    <option selected value="">Open this select Role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="user">User</option>
-                                    <option value="guest">Guest</option>
+                                <select class="form-select" id="role" name="role" placeholder="Select the Role"
+                                    #role="ngModel" [(ngModel)]="roleservice.roleValue" value="role1" required
+                                    [class.is-invalid]="role.invalid && role.touched">
+                                    <option selected value="" hidden>Open this select Role</option>
+                                    <option *ngFor="let list of roleDrop">
+                                        {{list.roleType}}
+                                    </option>
                                 </select>
+                                <small class="text-danger" [class.d-none]="role.valid||role.untouched">Select
+                                    Role</small>
+
 
                             </div>
-                            <br/>
+                            <br />
                             <div class="col-md-12 text-center">
-                                <a (click)="registerUser(registerForm)" class="btn btn-primary me-3" href="/login">Register</a>
-
+                                <button (click)="registerUser(registerForm)" class="btn btn-primary mr-3"
+                                    [routerLink]="['/login']" [disabled]="registerForm.form.invalid">Register</button>
+                             <button type="submit " [routerLink]="[ ''] " class="btn btn-danger me-3 ">Back</button>&nbsp;
+                                
                             </div>
                         </form>
                     </div>

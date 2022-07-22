@@ -9,38 +9,46 @@
                         <form class="requires-validation" novalidate #loginForm="ngForm">
 
                             <div class="col-md-12">
-                                <input class="form-control" type="text" name="email" placeholder="Email ID" required [(ngModel)]="user.email">
-                                <div class="valid-feedback">Email field is valid!</div>
-                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                                <input class="form-control" type="text" name="email" placeholder="Email ID" required
+                                    #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
+                                    [(ngModel)]="user.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                                <small *ngIf="email.errors?.['required']" class="text-danger"
+                                    [class.d-none]="email.untouched">Enter your
+                                    Email ID</small>
+                                <small *ngIf="email.errors?.['pattern']" class="text-danger"
+                                    [class.d-none]="email.untouched||email.valid">Email ID is not valid
+                                </small>
                             </div>
 
                             <div class="col-md-12">
                                 <input class="form-control" type="password" name="password" placeholder="Password"
-                                    required [(ngModel)]="user.password">
-                                <div class="valid-feedback">Password field is valid!</div>
-                                <div class="invalid-feedback">Password field cannot be blank!</div>
+                                    #password="ngModel" [(ngModel)]="user.password"
+                                    [class.is-invalid]="password.invalid && password.touched">
+                                <small class="text-danger" *ngIf="password.errors?.['required']"
+                                    [class.d-none]="password.untouched">Enter your Password</small>
+                                <small *ngIf="password.errors?.['pattern']" class="text-danger"
+                                    [class.d-none]="password.untouched||password.valid">Password must be Alphanumeric &
+                                    contain
+                                    atleast 8 letters </small>
+
                             </div>
                             <div class="col-md-12">
                                 <select class="form-select" id="role" name="role" placeholder="Select the Role"
                                     aria-label="Default select example" [(ngModel)]="roleservice.roleValue"
-                                    value="role1" required> 
-                                    <option selected value="">Open this select Role</option>
+                                    value="role1" required>
+                                    <option value="">Open this select Role</option>
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
-                                    <option value="guest">Guest</option>
                                 </select>
-                                {{roleservice.roleValue}}
                             </div>
                             <div class="col-md-12">
 
-                                <button *ngIf="roleservice.roleValue === 'admin'"    class="btn btn-primary me-3"
-                                    value="Login" (click)="displayAdmin(loginForm)">Admin Login</button>
+                                <button *ngIf="roleservice.roleValue === 'admin'" class="btn btn-primary me-3"
+                                    value="Login" (click)="displayAdmin(loginForm)" [disabled]="loginForm.form.invalid">
+                                    Login</button>
                                 <button *ngIf="roleservice.roleValue === 'user'" class="btn btn-primary me-3"
-                                    value="Login" (click)="displayUser(loginForm)">User Login</button>
-                                <button *ngIf="roleservice.roleValue === 'guest'" class="btn btn-primary me-3"
-                                    value="Login" (click)="displayUser(loginForm)">Guest Login</button>    
-                                
-
+                                    value="Login" (click)="displayUser(loginForm)" [disabled]="loginForm.form.invalid">
+                                    Login</button>
                             </div>
                         </form>
                     </div>
@@ -49,11 +57,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-

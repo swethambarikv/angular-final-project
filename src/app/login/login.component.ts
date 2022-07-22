@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminRegisterService } from '../service/admin-register.service';
 import { RoleServiceService } from '../service/role-service.service';
-import { User } from '../service/user';
-import { User1 } from '../service/user1';
 import { HttpClient } from '@angular/common/http';
-import { LoginService } from '../service/login.service';
 import { AuthService } from '../service/auth.service';
 import { NgForm } from '@angular/forms';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -22,35 +20,35 @@ export class LoginComponent implements OnInit {
     public user: AdminRegisterService,
     public roleservice: RoleServiceService,
     private http: HttpClient,
-    public authService: AuthService) { }
-
+    public authService: AuthService,
+    public userService:UserService) { }
+  roleName: string | null = '';
   ngOnInit(): void {
 
   }
   public displayAdmin(loginForm: NgForm) {
-    console.log(loginForm.value)
+    this.roleName = loginForm.value.role;
+    this.userService.getRole(this.roleName);
     this.authService.loginUser(loginForm.value).subscribe(
       res => {
-        localStorage.setItem('token',res.token)
-
-        console.log("Display Admin: "+res.users)
+        localStorage.setItem('token', res.token)
       },
       error => {
         console.log(error)
       }
 
+      
+
     )
     this.router.navigate(['/adminrole']);
   }
   public displayUser(loginForm: NgForm) {
-    console.log(loginForm.value)
     this.authService.loginUser(loginForm.value).subscribe(
-      res=>{
-        localStorage.setItem('token',res.token)
-        console.log("Display User: "+res.users)
-      },
-      error=>{
-        console.log("Display user error: "+error)
+      res => {
+        localStorage.setItem('token', res.token)
+            },
+      error => {
+        console.log("Display user error: " + error)
       }
     )
     this.router.navigate(['/userrole']);

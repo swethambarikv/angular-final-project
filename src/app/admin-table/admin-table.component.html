@@ -17,34 +17,27 @@
         </thead>
         <tbody>
             <tr>
-                <tr *ngFor="let u of admins['admin']">
-                    <td>{{u._id}}</td>
-                    <td>{{u.name}}</td>
-                    <td>{{u.email}}</td>
-                    <td>{{u.gender}}</td>
-                    <td>{{u.phone}}</td>
-                    <td>{{u.topic}}</td>
+            <tr *ngFor="let u of admins['admin']">
+                <td>{{u._id}}</td>
+                <td>{{u.name}}</td>
+                <td>{{u.email}}</td>
+                <td>{{u.gender}}</td>
+                <td>{{u.phone}}</td>
+                <td>{{u.topic}}</td>
+                <td>
 
-                    <td>
+            <tr>
+                <button type=" submit " (click)="remove(u._id) " class="btn btn-danger  mr-3">Remove</button>
+                <button type=" submit " (click)="onEdit(u._id) " class="btn btn-info "
+                    [routerLink]="['/update',u._id] "> Edit</button>
 
-                        <tr>
-                            <button type=" submit " (click)="remove(u._id) " class="btn btn-danger  mr-3">Remove</button>
-                            <button type=" submit " (click)="onEdit(u._id) " class="btn btn-info " [routerLink]="[ '/update ',u._id] "> Edit
-                            </button>
-
-                        </tr>
-                    </td>
-                </tr>
+            </tr>
+            </td>
+            </tr>
         </tbody>
     </table>
-
-    <div class="text-center ">
-        <a [routerLink]="[ '/admin '] " class="btn btn-primary me-5 ">Add
-            Admin</a>&nbsp;
-
-
-        <button type="submit " [routerLink]="[ '/adminrole '] " class="btn btn-primary me-3 ">Back</button>&nbsp;
-
-        <!-- <button type="submit " [routerLink]="[ '/ '] " class="btn btn-danger ">Logout</button> -->
+    <div class="text-center">
+        <button [routerLink]="['/admin']" class="btn btn-primary mr-3 ">Add Admin</button>
+        <button type="submit" [routerLink]="['/adminrole']" class="btn btn-primary me-3 ">Back</button>
     </div>
 </div>

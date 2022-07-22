@@ -1,10 +1,18 @@
-<div class="rolecompo">
-    <div class="text-center" id="role-compo">Role</div>
-    <div class="compo">
-        <img src="https://static.thenounproject.com/png/4669369-200.png">
-        <br />
-        <div class="user-compo">
-            <button [routerLink]="['/usertable']" class="btn btn-dark me">USER</button>
-        </div>
-    </div>
+
+<h1 class="text-center" id="role-title">User Role</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="max-width: 15rem;">
+              <a href="/usertable">
+                <img class="card-img-top"
+                  src="https://static.thenounproject.com/png/4669369-200.png"
+                  alt="User Role">
+              </a>
+                  <button class="btn btn-light" [routerLink]="['/usertable']">User</button>
+
+             
+      </div>
 </div>
+    </div>
+</div>        

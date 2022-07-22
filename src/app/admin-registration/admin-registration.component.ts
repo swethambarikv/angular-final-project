@@ -18,6 +18,7 @@ export class AdminRegistrationComponent implements OnInit {
   public email!: string;
   public phone!: string;
   public gender!: string;
+  public password!:string;
   public topic!: string;
 
 
@@ -36,12 +37,17 @@ export class AdminRegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this._id = params['_id']
-      console.log("route _id : " + this._id);
     });
-    this.adminService.getAdminId(this._id).subscribe(
-      (res: any) => this.editAdmin(res),
-      (err: any) => console.log("Error in Get ID" + err)
-    )
+    if(this._id){
+      this.adminService.getAdminId(this._id).subscribe(
+        (res: any) => this.editAdmin(res),
+        (err: any) => console.log("Error in Get ID" + err)
+      )
+    }
+    else{
+  console.log("")    
+    }
+    
 
   }
   public editAdmin(selectAdmin: admin) {
@@ -55,7 +61,7 @@ export class AdminRegistrationComponent implements OnInit {
     })
   }
   public userdata(adminForm: FormGroup) {
-    console.log("Submit data: " + adminForm.value);
+    console.log("Submit data: " +Object.values(adminForm));
     if (!this._id) {
       this.adminService.postAdmin(adminForm.value).subscribe((res) => {
         console.log("post: " + res)

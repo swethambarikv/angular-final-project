@@ -1,135 +1,80 @@
 <div class="admin-reg-form">
-    <form [formGroup]="adminForm">
-        <div class="form-body">
-            <div class="row">
-                <div class="form-holder">
-                    <div class="form-content">
-                        <div class="form-items">
-                            <h3>Add Admin</h3>
-                            <p>Fill in the data below.</p>
-                            <div class="col-md-12">
-                                <input class="form-control" type="text" name="name" placeholder="Full Name" required formControlName="name" required>
-                                <div class="valid-feedback">Name field is valid!</div>
-                                <div class="invalid-feedback">Name field cannot be blank!</div>
-                            </div>
+  <form [formGroup]="adminForm">
+    <div class="form-body">
+      <div class="row">
+        <div class="form-holder">
+          <div class="form-content">
+            <div class="form-items">
+              <h3>Add Admin</h3>
+              <p>Fill in the data below.</p>
+              <div class="col-md-12">
+                <input class="form-control" type="text" name="name" placeholder="Full Name" required
+                  formControlName="name" required>
+                <div class="valid-feedback">Name field is valid!</div>
+                <div class="invalid-feedback">Name field cannot be blank!</div>
+              </div>
 
-                            <div class="col-md-12">
-                                <input class="form-control" type="email" name="email" formControlName="email" placeholder="E-mail Address" required>
-                                <div class="valid-feedback">Email field is valid!</div>
-                                <div class="invalid-feedback">Email field cannot be blank!</div>
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <input class="form-control" type="password" name="password" placeholder="Password" required>
-                                <div class="valid-feedback">Password field is valid!</div>
-                                <div class="invalid-feedback">Password field cannot be blank!</div>
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <label class="mb-3 mr-1" for="gender">Gender</label>
+              <div class="col-md-12">
+                <input class="form-control" type="email" name="email" formControlName="email"
+                  placeholder="E-mail Address" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" >
+                <div class="valid-feedback">Email field is valid!</div>
+                <div class="invalid-feedback">Email field cannot be blank!</div>
+              </div>
+              <div class="col-md-12 mt-3">
+                <input class="form-control" type="password" formControlName="password" name="password"
+                  placeholder="Password" pattern="^[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                <div class="valid-feedback">Password field is valid!</div>
+                <div class="invalid-feedback">Password field cannot be blank!</div>
+              </div>
+              <div class="col-md-12 mt-3">
+                <label class="mb-3 mr-1" for="gender">Gender</label>
 
-                                <input type="radio" class="btn-check" name="gender" value="male" id="male" formControlName="gender" autocomplete="off" required>
-                                <label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
+                <input type="radio" class="btn-check" name="gender" value="male" id="male" formControlName="gender"
+                  autocomplete="off" required>
+                <label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
 
-                                <input type="radio" class="btn-check" name="gender" value="female" id="female" formControlName="gender" autocomplete="off" required>
-                                <label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
+                <input type="radio" class="btn-check" name="gender" value="female" id="female" formControlName="gender"
+                  autocomplete="off" required>
+                <label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
 
-                                <input type="radio" class="btn-check" name="gender" formControlName="gender" id="secret" autocomplete="off" required>
-                                <label class="btn btn-sm btn-outline-secondary" for="secret">Secret</label>
-                                <div class="valid-feedback mv-up">You selected a gender!</div>
-                                <div class="invalid-feedback mv-up">Please select a gender!</div>
-                            </div>
+                <input type="radio" class="btn-check" name="gender" formControlName="gender" id="secret"
+                  autocomplete="off" required>
+                <label class="btn btn-sm btn-outline-secondary" for="secret">Secret</label>
+                <div class="valid-feedback mv-up">You selected a gender!</div>
+                <div class="invalid-feedback mv-up">Please select a gender!</div>
+              </div>
 
 
 
-                            <div class="form-groupcol-md-12 mt-3">
-                                <label class="mb-3 mr-1" for="phone">Phone</label>
-                                <input type="tel" pattern="^\d{10}$" class="col-md-12" required name="phone" formControlName="phone">
-                            </div>
+              <div class="form-groupcol-md-12 mt-3">
+                <label class="mb-3 mr-1" for="phone">Phone</label>
+                <input type="tel" pattern="^\d{10}$" class="col-md-12" required name="phone" pattern="^\d{10}$"
+                  formControlName="phone">
+              </div>
 
-                            <div class="form-groupcol-md-12 mt-3">
-                                <label class="mb-3 mr-1">Language</label>
-                                <select class="custom-select" required name="topic" formControlName="topic">
+              <div class="form-groupcol-md-12 mt-3">
+                <label class="mb-3 mr-1">Language</label>
+                <select class="custom-select" required name="topic" formControlName="topic">
                   <option hidden value="">Select any one</option>
                   <option *ngFor="let topic of topics">{{topic}}</option>
                 </select>
-                            </div>
+              </div>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                <label class="form-check-label">I confirm that all data are correct</label>
-                                <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
-                            </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label">I confirm that all data are correct</label>
+                <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
+              </div>
 
-                            <div class="form-button mt-3">
-                                <button [disabled]="adminForm.invalid" type="submit" [routerLink]="['/admintable']" class="btn btn-primary" (click)="userdata(adminForm)">submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <div class="form-button mt-3">
+                <button type="submit" [routerLink]="['/admintable']" class="btn btn-primary"
+                  (click)="userdata(adminForm)">submit</button>
+              </div>
             </div>
+          </div>
         </div>
-    </form>
+      </div>
+    </div>
+  </form>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="container">
-  <form class="border border-dark bg-secondary text-white w-50 p-5" #userForm="ngForm" novalidate>
-    <h1>Add Admin</h1>
-
-    <div class="form-group">
-      <h3><label>Name</label></h3>
-      <input type="text" #name="ngModel" class="form-control" [class.is-invalid]="name.invalid && name.touched"
-        name="name" [(ngModel)]="adminService.name" required>
-      <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
-    </div>
-
-    <div class="form-group">
-      <h3><label>Email</label></h3>
-      <input type="text" #email="ngModel"
-        pattern="([a-zA-Z0-9-_\.]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,5})(\.[a-zA-Z]{2,5})?$" class="form-control" required
-        [class.is-invalid]="email.invalid && email.touched" name="email" [(ngModel)]="adminService.email">
-      <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
-    </div><br>
-
-    <div class="form-group">
-      <h3> <label>Gender</label></h3>
-      <label for=""><input type="radio" name="gender" #gender value="male" [(ngModel)]="adminService.gender" required
-          #myGender="ngModel">&nbsp;Male</label>&nbsp;
-      <label for=""><input type="radio" name="gender" #gender value="female" [(ngModel)]="adminService.gender" required
-          #myGender="ngModel">&nbsp;Female</label>
-    </div><br>
-
-    <div class="form-group">
-      <h3><label>Phone</label></h3>
-      <input type="tel" #phone="ngModel" pattern="^\d{10}$" class="form-control" required
-        [class.is-invalid]="phone.invalid && phone.touched" name="phone" [(ngModel)]="adminService.mobile">
-      <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">PhoneNumber is required</small>
-    </div><br>
-
-    <div class="form-group">
-      <h3><label>Language</label></h3>
-      <select class="custom-select" [class.is-invalid]="topic.invalid && topic.untouched" required #topic="ngModel"
-        name="topic" [(ngModel)]="adminService.topic">
-        <option hidden value="">Select any one</option>
-        <option *ngFor="let topic of topics">{{topic}}</option>
-      </select>
-      <small class="text-danger" [class.d-none]="topic.valid || topic.untouched">Please choose a topic</small>
-    </div><br>
-    <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary"
-      (click)="userdata(userForm)">submit</button><br><br>
-  </form>
-</div> -->

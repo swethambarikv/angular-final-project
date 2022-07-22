@@ -7,7 +7,6 @@ import { User1} from './user1'
 })
 export class UserRegistrationService {
 
-  constructor(private http: HttpClient) { }
   public _id!: User1;
   public name!: User1;
   public email!: User1;
@@ -24,6 +23,8 @@ export class UserRegistrationService {
   public selectedUser!: User1;
 
   public users!: any;
+  constructor(private http: HttpClient) { }
+
   public userToEdit() {
     return this.selectedUser._id;
   }
@@ -41,8 +42,7 @@ export class UserRegistrationService {
     return this.http.post(this.baseUrl, user);
   }
   public putUser(user: User1) {
-    console.log("User");
-    return this.http.put(this.baseUrl + 'update/' + `${user._id}`, user, { responseType: 'text' });
+    return this.http.put(this.baseUrl + `${user._id}`, user, { responseType: 'text' });
   }
   public deleteUser(_id: string) {
     return this.http.delete(this.baseUrl + 'delete/' + `${_id}`, { responseType: 'text' })

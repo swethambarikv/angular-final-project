@@ -1,0 +1,50 @@
+<div class="role-form">
+    <h1 class="text-center">Role Page</h1>
+    <p>Fill in the data below.</p>
+    <form class="requires-validation" novalidate #roleForm="ngForm">
+        <div class="col-md-12">
+            <h1 class="text-center">Role Page</h1>
+            <label>Role</label>
+            <input name="role" type="text" placeholder="Enter the role " #role="ngModel"
+                [(ngModel)]="roleService.selectedRole" class="form-control rounded-0" required>
+            <div class="valid-feedback">Role field is valid!</div>
+            <div class="invalid-feedback">Role field cannot be blank!</div>
+            <br />
+            <br />
+            <button class="btn btn-dark" (click)="onSubmit(roleForm)">Add role</button>
+        </div>
+    </form>
+</div>
+
+<div class="table table-dark" style="margin-top: 20px;">
+    <h2 class="text-center">
+        <strong>Role table</strong>
+    </h2>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>RoleName</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of roles['role']">
+                <td>{{u['_id']}}</td>
+                <td>{{u['roleType']}}</td>
+                <td>
+            <tr>
+                <button type=" submit " (click)="remove(u['_id']) " class="btn btn-danger  mr-3">Remove</button>
+                <button type=" submit " (click)="onEdit(u)" class="btn btn-info ">Edit
+                </button>
+
+            </tr>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center ">
+        <button type="submit " [routerLink]="[ '/adminrole'] " class="btn btn-primary me-3 ">Back</button>&nbsp;
+    </div>
+</div>

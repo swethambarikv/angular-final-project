@@ -1,20 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RegisterComponent } from './register.component';
-describe('RegisterComponent', () => {
-  let component: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+import { RoleTableComponent } from './role-table.component';
+
+describe('RoleTableComponent', () => {
+  let component: RoleTableComponent;
+  let fixture: ComponentFixture<RoleTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule
       ],
-      declarations: [ RegisterComponent ]
+      declarations: [ RoleTableComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RegisterComponent);
+    fixture = TestBed.createComponent(RoleTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

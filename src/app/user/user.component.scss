@@ -1,32 +1,39 @@
-.rolecompo{
-    background-image: url('https://www.teahub.io/photos/full/232-2327450_hd-business-wallpaper-professional-background-hd-design.jpg');
-    background-size: cover;
-    height: 100%;
-    display: flex;
-    position: relative;
-  }
-  #role-compo {
-    font-size: 100px;
-    letter-spacing: -1px;
-    color: rgb(37, 161, 209);
-    text-transform: uppercase;
-    text-shadow: 1px 1px 0 #000; 
-    margin: 10px 0 24px;
-    text-align: center;
-    line-height: 50px;
-    padding-left: 500px;
-    padding-top: 100px;
-  }
-  .compo{
-    padding-top: 100px;
-    padding-right: 100px;
-    margin-left: 100px;
-  }
-  .user-compo{
-    padding-top: 100px;
-    padding-right: 100px;
-    margin-left: 30%;
-    margin-top: -30%;
-    margin-right: 50px;
+.card-img-top:hover {
+  transform: scale(1.1);
+}
 
-  }
+.card {
+  margin: 5rem 5rem;
+  position: relative;
+}
+
+.card-body {
+  z-index: 2;
+  position: absolute;
+  font-weight: 400;
+  font-size: x-large;
+  text-align: center;
+  width: 110%;
+  bottom: 0;
+}
+
+.container {
+  background-image: url('https://www.teahub.io/photos/full/232-2327450_hd-business-wallpaper-professional-background-hd-design.jpg');
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+
+#role-title {
+  font-size: 100px;
+  letter-spacing: -1px;
+  color: rgb(37, 161, 209);
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;
+  margin: 10px 0 24px;
+  text-align: center;
+  line-height: 50px;
+}

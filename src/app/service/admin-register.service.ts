@@ -18,39 +18,31 @@ export class AdminRegisterService {
   public role!: User1;
   public username!: User;
   public password!: User;
-  // public user!: any;
-
   public adminId!:string;
-  readonly baseUrl = "http://localhost:8000/users";
+  readonly baseUrl = "http://localhost:8000/users/";
+  readonly AdminbaseUrl = "http://localhost:8000/admin";
   public selectedAdmin!: User1;
   public admins!: any;
 
   adminValue: any;
   public postAdmin(admin: User1) {
-    console.log("---------ADD ADMIN ----------------");
-    console.log('posted')
-    console.log(admin);
-    return this.http.post(this.baseUrl, admin);
+    const { name,email,password,gender,phone,topic } = admin
+    console.log("Destructured value : "+name+" password : "+ password);
+    return this.http.post(this.baseUrl+`/register`, {name: name, email: email, password: password, gender:gender, phone:phone, topic: topic, role: "admin" });
   }
   public getAdminId(_id:string ) {
     return this.http.get(this.baseUrl + `/${_id}`)
   }
-
   public getAdminList() {
     return this.http.get<User1>(this.baseUrl);
   }
   public adminToEdit() {
     return this.selectedAdmin._id;
   }
-
-
   public getAdminById(_id: string) {
-    console.log("ID : ", _id)
     return this.http.get<any>(this.baseUrl + `/${_id}`);
   }
-
   public putAdmin(_id:string,adminForm:NgForm) {
-    console.log("Put request-Admin"+_id+" "+adminForm);
     return this.http.put(this.baseUrl +`/${_id}`,adminForm);
   }
   public deleteAdmin(_id: string) {
@@ -59,21 +51,16 @@ export class AdminRegisterService {
   public get getThatId() {
     return this.adminId;
   }
-
   public deleteUserId(_id: string) {
-    console.log("delete: " + _id);
     return this.http.delete(this.baseUrl + `/${_id}`);
   }
-
-  public updateAdmin(form: User1, _id: string) {
-    
+  public updateAdmin(form: User1, _id: string) { 
     return this.http.put(this.baseUrl + `/${_id}`, form)
   }
-
-  set setId(_id:string){
+  public set setId(_id:string){
     this.adminId=_id;
   }
-  get getId(){
+  public get getId(){
     return this.adminId;
   }
 }

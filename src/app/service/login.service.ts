@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-
-  constructor(private http: HttpClient, private router: Router) { }
   role: String = '';
   readonly baseURL = "http://localhost:8000/login/"
+  constructor(private http: HttpClient, private router: Router) { }
+
+  
   public displayAdmin() {
     this.router.navigate(['/adminrole']);
   }

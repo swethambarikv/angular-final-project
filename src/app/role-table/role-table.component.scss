@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
 
-.login-form {
+.registration-form {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
@@ -8,8 +8,8 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.login-form {
-    height: 100%;
+.role-form {
+    // height: 100%;
     background-color: #152733;
     overflow: hidden;
 }
@@ -148,8 +148,6 @@
 .valid-feedback{
    color: #2acc80;
 }
-
-
 
 
 

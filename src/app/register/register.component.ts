@@ -11,18 +11,20 @@ import { RoleServiceService } from '../service/role-service.service';
 export class RegisterComponent implements OnInit {
 
   public topics = ['Angular', 'React', 'php', 'Python', 'Pearl', '.Net', 'EBA', 'Oracle', 'BFS'];
-  constructor(public userService: UserService, private authService: AuthService, public roleservice: RoleServiceService) { }
+  constructor(public userService: UserService, public roleservice: RoleServiceService) { }
   visible: boolean = false;
+  roleDrop: any = [];
   ngOnInit(): void {
+    this.roleservice.getRoleDrop().subscribe((res) => {
+           this.roleDrop = Object.values(res)[0];
+
+
+    })
   }
   public registerUser(registerForm: NgForm) {
-    console.log(registerForm.value);
-    this.authService.registerUser(registerForm.value).subscribe(
+    this.userService.postUser(registerForm.value).subscribe(
       res => {
         console.log(res)
-
-        // localStorage.setItem('token', res.token)
-        // console.log(res)
       },
       err => {
         console.log(err)

@@ -1,21 +1,40 @@
-<div class="role-comp">
-        <h1 class="text-center" id="role-title">Role</h1>
+<div class="cover">
+        <h1 class="text-center" id="role-title"> Role</h1>
         <div class="container">
                 <div class="row">
                         <div class="col">
-                                <img src="https://static.thenounproject.com/png/4669369-200.png">
+                                <div class="card" style="max-width: 15rem;">
+                                        <a href="/admintable">
+                                                <img class="card-img-top"
+                                                        src="https://static.thenounproject.com/png/4669369-200.png"
+                                                        alt="Admin Role">
+                                        </a>
+                                        <button class="btn btn-light" [routerLink]="['/admintable']">Admin</button>
+                                </div>
 
                         </div>
                         <div class="col">
-                                <img src="https://static.thenounproject.com/png/4669369-200.png">
+                                <div class="card" style="max-width: 15rem;">
+                                        <a href="/usertable">
+                                                <img class="card-img-top"
+                                                        src="https://static.thenounproject.com/png/4669369-200.png"
+                                                        alt="Admin Role">
+                                        </a>
+                                        <button class="btn btn-light" [routerLink]="['/usertable']">User</button>
+
+
+                                </div>
                         </div>
-                </div>
-                <div class="row">
                         <div class="col">
-                                <button class="btn btn-dark " [routerLink]="['/admintable']">ADMIN</button>
-                        </div>
-                        <div class="col">
-                                <button class="btn btn-dark" [routerLink]="['/usertable']">USER</button>
+                                <div class="card" style="max-width: 15rem;">
+                                        <a href="/role-table">
+                                                <img class="card-img-top"
+                                                        src="https://static.thenounproject.com/png/4669369-200.png"
+                                                        alt="Admin Role">
+                                        </a>
+                                        <button class="btn btn-light" [routerLink]="['/role-table']">Role</button>
+
+                                </div>
                         </div>
                 </div>
         </div>

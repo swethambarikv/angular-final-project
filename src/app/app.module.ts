@@ -17,11 +17,11 @@ import { UserService } from './service/user.service';
 import { AdminRegisterService } from './service/admin-register.service';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './service/auth.service';
-import { TokeninterceptorService } from './tokeninterceptor.service';
+import { TokeninterceptorService } from './service/tokeninterceptor.service'
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ContactComponent } from './contact/contact.component';
-
+import { RoleTableComponent } from './role-table/role-table.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +36,8 @@ import { ContactComponent } from './contact/contact.component';
     RegisterComponent,
     AboutUsComponent,
     NavBarComponent,
-    ContactComponent
+    ContactComponent,
+    RoleTableComponent
 
   ],
   imports: [
@@ -47,7 +48,7 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [UserService, AdminRegisterService,AuthService,{
+  providers: [HttpClientModule,UserService, AdminRegisterService,AuthService,{
     provide:HTTP_INTERCEPTORS,useClass:TokeninterceptorService,multi:true
   }],
   bootstrap: [AppComponent]

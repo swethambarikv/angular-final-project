@@ -56,8 +56,6 @@ export class UserRegistrationComponent implements OnInit {
     })
   }
   public userdata(userForm: FormGroup) {
-    // console.log(userForm.value);
-
     console.log(this._id);
     this.userForm.role = "user"
     console.log(userForm.value)

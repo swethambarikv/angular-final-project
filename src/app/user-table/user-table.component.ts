@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RoleServiceService } from '../service/role-service.service';
 import { UserService } from '../service/user.service';
-import { User1 } from '../service/user1';
 import jwtDecode from 'jwt-decode';
 
 @Component({
@@ -12,17 +11,35 @@ import jwtDecode from 'jwt-decode';
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
+
   public users: any = [];
   _id: string = '';
   userForm: FormGroup | any;
   visible!: boolean;
-  constructor(public roleService: RoleServiceService, private userService: UserService, private router: Router) { }
-  ngOnInit(): void {
+  id: any;
+  token: any
+  roleId: any;
+  userRole: any = ''
+  roleValue: any = '';
+
+  constructor(public roleService: RoleServiceService, private userService: UserService, private router: Router, private roleservice: RoleServiceService) { }
+
+  ngOnInit() {
+
     if (localStorage.getItem('token')) {
-      let token = jwtDecode(localStorage.getItem('token') || "")
-       console.log("User Id : ", token) 
-      }
-    console.log("User table rolevalue:" + this.roleService.roleValue)
+      this.token = jwtDecode(localStorage.getItem('token') || "")
+      console.log("User Id : ", this.token)
+      this.id = this.token.id
+      console.log(this.id)
+    }
+
+    this.userService.getUserById(this.id).subscribe(res => {
+      console.log(res)
+      this.roleId = res.role
+      this.userService.getUserRole(this.roleId).subscribe(res => {
+        this.roleValue = res.roleType
+      })
+    })
     this.userList();
   }
 
@@ -30,6 +47,7 @@ export class UserTableComponent implements OnInit {
     this.userService.getUserList().subscribe((data) => {
       JSON.stringify(data);
       this.users = data;
+      console.log("IN USER TABLE : ", data)
       if (data != null) {
         this.visible = false;
       }

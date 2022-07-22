@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from './user';
 import { User1 } from './user1';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private http: HttpClient) { }
+  loggedRole: any;
   public _id!: User1;
   public name!: User1;
   public email!: User1;
@@ -23,25 +21,24 @@ export class UserService {
   users!: any[];
   public userId!: string;
 
+  data: any
+  readonly baseUrl = "http://localhost:8000/users";
 
-  readonly baseUrl = "http://localhost:8000/users/user-table";
+  constructor(private http: HttpClient) { }
+ 
 
   public getUserList() {
-    return this.http.get<User1>(this.baseUrl);
+    return this.http.get<User1>(this.baseUrl + `/user-table`);
   }
   public getUserById(_id: string) {
     return this.http.get<any>(this.baseUrl + `/${_id}`);
   }
   public postUser(user: User1) {
-    console.log(user);
-    // return this.http.post(`${this.baseUrl}/register`, user);
-    return this.http.post<User1>(this.baseUrl+`/register`,user);
-    // return this.http.post(this.baseUrl+`/register`,user);
+    const { name, email, password, gender, phone, topic } = user
+    return this.http.post<User1>(this.baseUrl + `/register`, user);
 
   }
   public putUser(_id: string, userForm: NgForm) {
-
-    console.log("PUT user: " + _id + " " + JSON.stringify(userForm));
     return this.http.put(this.baseUrl + `/${_id}`, userForm)
   }
   public deleteUser(_id: string) {
@@ -52,5 +49,14 @@ export class UserService {
   }
   get getId() {
     return this.userId;
+  }
+  role: string = ''
+  getRole(roleValue: any) {
+    this.role = roleValue
+    return this.role;
+  }
+
+  public getUserRole(_id: string) {
+    return this.http.get<any>(this.baseUrl + '/user-role' + `/${_id}`)
   }
 }
